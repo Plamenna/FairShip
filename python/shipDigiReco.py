@@ -239,12 +239,7 @@ class ShipDigiReco:
        if self.digiSBT.GetSize() == index: 
           self.digiSBT.Expand(index+1000)
        #For different thresholds:
-       if detID<999999 and ElossPerDetId[seg]<0:    aHit.setInvalid()  # threshold for liquid scintillator, source Berlin group
-       if detID<999999 and ElossPerDetId[seg]<0.005:    aHit.setInvalid1()  
-       if detID<999999 and ElossPerDetId[seg]<0.025:    aHit.setInvalid2()  
-       
-       if detID<999999 and ElossPerDetId[seg]<0.045:    aHit.setInvalid3()  
-       
+       if detID<999999 and ElossPerDetId[seg]<0.045:    aHit.setInvalid()  # threshold for liquid scintillator, source Berlin group
        if detID>999999 and ElossPerDetId[seg]<0.001:    aHit.setInvalid()  # precise threshold for plastic to be determined 
        self.digiSBT[index] = aHit
        v = ROOT.std.vector('int')()

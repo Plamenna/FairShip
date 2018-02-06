@@ -1,9 +1,9 @@
 #include <math.h>
-#include "TSystem.h"
 #include "TROOT.h"
 #include "TMath.h"
 #include "TFile.h"
 #include "TRandom.h"
+#include "TSystem.h"
 #include "FairPrimaryGenerator.h"
 #include "MuDISGenerator.h"
 #include "TGeoVolume.h"
@@ -227,14 +227,14 @@ Bool_t MuDISGenerator::ReadEvent(FairPrimaryGenerator* cpg)
     //some start/end positions in z (f.i. emulsion to Tracker 1)
     Double_t start[3]={0.,0.,startZ};
     Double_t end[3]={0.,0.,endZ};
-
-// incoming muon  array('d',[pid,px,py,pz,E,x,y,z,w])
+ // incoming muon  array('d',[pid,px,py,pz,E,x,y,z,w,isProton,weightDIS])
     TVectorD* mu = dynamic_cast<TVectorD*>(iMuon->AddrAt(0));
     //cout << "muon DIS Generator in muon " << int(mu[0][0])<< endl; 
     Double_t x = mu[0][5]*100.; // come in m -> cm
     Double_t y = mu[0][6]*100.; // come in m -> cm
     Double_t z = mu[0][7]*100.; // come in m -> cm
     Double_t w = mu[0][8];
+    Double_t weightDIS=mu[0][10];//mbar
 // calculate start/end positions along this muon, and amout of material in between
     Double_t txmu=mu[0][1]/mu[0][3];
     Double_t tymu=mu[0][2]/mu[0][3];
@@ -276,7 +276,8 @@ Bool_t MuDISGenerator::ReadEvent(FairPrimaryGenerator* cpg)
 
     //cout << "MuDIS: put position " << xmu << ", " << ymu << ", " << zmu << endl;
     //modify weight, by multiplying with average densiy along track??
-    cpg->AddTrack(int(mu[0][0]),mu[0][1],mu[0][2],mu[0][3],xmu,ymu,zmu,-1,false,mu[0][4],0.,w);
+
+    cpg->AddTrack(int(mu[0][0]),mu[0][1],mu[0][2],mu[0][3],xmu,ymu,zmu,-1,false,mu[0][4],0.,weightDIS);
     // in order to have a simulation of possible veto detector hits, let Geant4 follow the muon backward
     // due to dE/dx, as soon as the muon travers thick material, this approximation will become bad. 
     // a proper implementation however would be to have this better integrated in Geant4, follow the muon, call DIS event, continue

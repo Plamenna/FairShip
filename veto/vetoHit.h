@@ -39,15 +39,22 @@ class vetoHit : public ShipHit
     Float_t GetADC() const {return fdigi;}
     Float_t GetTDC() const {return ft;}
     Double_t GetEloss() {return fdigi;}
+    //45MeV threshold
     void setInvalid() {flag = false;}
     void setIsValid() {flag = true;}
     bool isValid() const {return flag;}
+
+
+
+
+
   private:
     Double_t ft;
     vetoHit(const vetoHit& point);
     vetoHit operator=(const vetoHit& point);
 
     Float_t flag;   ///< flag
+    
 
     ClassDef(vetoHit,1);
 
