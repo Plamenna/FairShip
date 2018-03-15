@@ -15,8 +15,8 @@ theDPmass = 0.2*u.GeV
 theDPepsilon = 0.00000008
 
 mcEngine     = "TGeant4"
-simEngine    = "Pythia8"  # "Genie" # Ntuple
-nEvents      = 100
+simEngine    = "muonDIS"  # "Genie" # Ntuple
+nEvents      = 1
 firstEvent   = 0
 inclusive    = "c"    # True = all processes if "c" only ccbar -> HNL, if "b" only bbar -> HNL, and for darkphotons: if meson = production through meson decays, pbrem = proton bremstrahlung, to do: QCD prod.
 deepCopy     = False  # False = copy only stable particles to stack, except for HNL events
@@ -309,7 +309,10 @@ if simEngine == "muonDIS":
  # mu_start, mu_end =  ship_geo.tauMudet.zMudetC,ship_geo.TrackStation2.z
  #
  # in front of UVT up to tracking station 1
- mu_start, mu_end = ship_geo.Chamber1.z-ship_geo.chambers.Tub1length-10.*u.cm,ship_geo.TrackStation1.z
+ #mu_start, mu_end = ship_geo.Chamber1.z-ship_geo.chambers.Tub1length-10.*u.cm,ship_geo.TrackStation1.z
+
+ #on the beging of the UVT to the T1
+ mu_start, mu_end = ship_geo.Chamber1.z-ship_geo.chambers.Tub1length,ship_geo.TrackStation1.z
  print 'MuDIS position info input=',mu_start, mu_end
  DISgen.SetPositions(ship_geo.target.z0, mu_start, mu_end)
  DISgen.Init(inputFile,firstEvent) 

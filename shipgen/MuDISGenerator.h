@@ -34,8 +34,8 @@ class MuDISGenerator : public FairGenerator
   }
 
  private:
-  Double_t MeanMaterialBudget(const Double_t *start, const Double_t *end, Double_t *mparam);
-
+  //Double_t MeanMaterialBudget(const Double_t* start, const Double_t* end, const Double_t* muSBTPosStart,const Double_t* muSBTPosEnd,Double_t* mparam);
+   Double_t MeanMaterialBudget(const Double_t *start, const Double_t *muSBTPosStart,const Double_t *muSBTPosEnd, const Double_t *end, Double_t *mparam);
   
  protected:
   Double_t startZ,endZ;

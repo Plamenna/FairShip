@@ -1,0 +1,262 @@
+[?1034hFairShip setup for muonDIS to produce 1 events
+[INFO   ] FairRootManager::OpenOutFile("./ship.conical.muonDIS-TGeant4.root")
+[INFO   ] Media file used: /afs/cern.ch/work/p/pvenkova/my_FairShip/FairShip/geometry/media.geo
+ Mag Spectro Design 1
+MuDIS position info input= -2478.0 2598.0
+[INFO   ] Opening input file /afs/cern.ch/work/p/pvenkova/12collaborationMeeting/muonDis_0.root 
+Generate  1  with DIS input  first event 5000
+[INFO   ] ==============  FairRunSim: Initialising simulation run ==============
+[INFO   ] FairGeoMedia: Read media 
+
+************************************************************* 
+     initialisation for run id 1519668321
+************************************************************* 
+[WARNING] FairField::FillParContainer Should be implemented in User class
+[INFO   ] ---------------User config is used: g4Config.C
+Loading Geant4 libraries (using geant4-config) ...
+33
+Loading VGM libraries ... 
+Loading g4root library ...
+Loading geant4vmc library ...
+Loading mtroot library ...
+
+=============================================================
+ Geant4 Virtual Monte Carlo 
+ Version 3.4 ( 8 March 2017 )
+ WWW : http://root.cern.ch/drupal/content/geant4-vmc
+=============================================================
+
+target at -70.1225m 
+fField  1.8
+Tau Nu Detector fDesign: 1
+tracking stations added
+isMaster=1
+Running TVirtualMCApplication::ConstructGeometry
+*************************************************************
+ Geant4 version Name: geant4-10-03-patch-01    (24-February-2017)
+                      Copyright : Geant4 Collaboration
+                      Reference : NIM A 506 (2003), 250-303
+                            WWW : http://cern.ch/geant4
+*************************************************************
+
+===> GEANT4 materials created and mapped to TGeo ones...
+===> GEANT4 physical volumes created and mapped to TGeo hierarchy...
+### INFO: TG4RootDetectorConstruction::Construct() finished
+TG4PostDetConstruction::Initialize
+G4 Stat: instantiated 1244 logical volumes 
+                      123122 physical volumes
+The tables for UV photon tracking set for H2O
+Adding HadronPhysicsList QGSP_BERT_HP_PEN
+G4PhysListFactory::GetReferencePhysList <QGSP_BERT_HP_PEN>  EMoption= 6
+<<< Geant4 Physics List simulation engine: QGSP_BERT_HP 3.0
+
+
+<<< Reference Physics List QGSP_BERT_HP_PEN is built
+
+Adding SpecialPhysicsList stepLimiter+specialCuts+
+### TG4SpecialControlsV2 constructed
+Visualization Manager instantiating with verbosity "warnings (3)"...
+ -I g4Config() using g4conf  macro: /afs/cern.ch/work/p/pvenkova/my_FairShip/FairShip/gconfig/g4config.in
+You are setting a new verbose level for Particle HP package.
+the new value will be used in whole of the Particle HP package, i.e., models and cross sections for Capture, Elastic, Fission and Inelastic interaction.
+SetCuts Macro: Setting Processes..
+SetCuts Macro: Setting cuts..
+TG4RootDetectorConstruction::ConstructSDandField
+TG4PostDetConstruction::InitializeSDandField
+[INFO   ] Simulation RunID: 1519668321
+### INFO: TG4RootDetectorConstruction::ConstructSDandField finished
+/cvmfs/ship.cern.ch/ShipSoft/FairSoftInst/share/Geant4-10.3.1/data/G4NDL4.5
+@@@ G4ParticleHPInelastic instantiated for particle neutron data directory variable is G4NEUTRONHPDATA pointing to /cvmfs/ship.cern.ch/ShipSoft/FairSoftInst/share/Geant4-10.3.1/data/G4NDL4.5/Inelastic
+@@@ G4ParticleHPInelasticData instantiated for particle neutron data directory variable is G4NEUTRONHPDATA pointing to /cvmfs/ship.cern.ch/ShipSoft/FairSoftInst/share/Geant4-10.3.1/data/G4NDL4.5
+Available UI session types: [ GAG, tcsh, csh ]
+
+**********************************************
+    GEANT4 Geometry statistics: 
+           1244 logical volumes
+          123122 physical volumes
+             34 materials
+             32 user limits
+           1232 sensitive detectors
+**********************************************
+
+[INFO   ] Monte Carlo Engine Initialisation with: TGeant4
+
+GammaToMuPair:  gamma->mu+mu- Bethe Heitler process, SubType= 15
+        good cross section parametrization from 422.633 MeV to 1e+12 GeV for all Z.
+
+AnnihiToMuPair:  e+e->mu+mu- annihilation, atomic e- at rest, SubType=.6
+        threshold at 43.6931 GeV good description up to 1000 TeV for all Z.
+@@@ G4ParticleHPInelastic instantiated for particle neutron data directory variable is G4NEUTRONHPDATA pointing to /cvmfs/ship.cern.ch/ShipSoft/FairSoftInst/share/Geant4-10.3.1/data/G4NDL4.5/Inelastic
+=======================================================================
+======       Pre-compound/De-excitation Physics Parameters     ========
+=======================================================================
+Type of pre-compound inverse x-section              3
+Type of de-excitation inverse x-section             3
+Min excitation energy (keV)                         0.01
+Level density (1/MeV)                               0.1
+Time limit for long lived isomeres (ns)             1000
+Use new data files                                  1
+Use complete data files                             0
+Correlated gamma emission flag                      0
+=======================================================================
+Number of de-excitation channels                    8
+MuDIS: mu xyz position -212.702, 185.356, 1216.58
+MuDIS: mu pxyz position -0.0106624, 0.16508, 3.06712
+MuDIS: mu weight 4975.12
+MuDIS: start position -199.858, -13.4952, -2478
+MuDIS: end position -217.504, 259.707, 2598
+THE TRACK LENGHT BEGINING=3699.95
+The direction:-0.00347129;0.0537443;0.998549;
+THE FIRST NODE IS=cave_1
+ THE MATERIAL SO FAR HAS DENSITY=0
+THE MATERIAL IS NOT MIXTURE0.001205 =0.001205
+THE MATERIAL IS MIXTURE0.499038
+THE STEP MADE IS =3339.52
+The next step and volume=0xe11f810
+FLAG TO SEE IF THIS POINT IS ON BOUNDARY0
+CUrrent node is=cave_1
+THE STEP IS111111=3339.52
+THE LENGGHT IS=360.435
+THE VOLUME NAME IS=cave_1
+THE LOCAL DENSITY=0.001205
+THE VOLUME IS MIXTURE=
+THE NEXT STEP IS222 =124.309
+CUrrent node is=T2Outerwall38_38
+THE STEP IS111111=3463.83
+THE LENGGHT IS=236.126
+THE VOLUME NAME IS=T2Outerwall38_38
+THE LOCAL DENSITY=2.7
+THE NEXT STEP IS222 =30.5007
+CUrrent node is=cave_1
+THE STEP IS111111=3494.33
+THE LENGGHT IS=205.625
+THE VOLUME NAME IS=cave_1
+THE LOCAL DENSITY=0.001205
+THE VOLUME IS MIXTURE=
+THE NEXT STEP IS222 =80.8166
+CUrrent node is=T2Hbar39_39
+THE STEP IS111111=3575.14
+THE LENGGHT IS=124.808
+THE VOLUME NAME IS=T2Hbar39_39
+THE LOCAL DENSITY=8.02
+THE VOLUME IS MIXTURE=
+THE NEXT STEP IS222 =30.0436
+CUrrent node is=cave_1
+THE STEP IS111111=3605.19
+THE LENGGHT IS=94.7646
+THE VOLUME NAME IS=cave_1
+THE LOCAL DENSITY=0.001205
+THE VOLUME IS MIXTURE=
+THE NEXT STEP IS222 =39.224
+CUrrent node is=liScXslope1_200837
+THE STEP IS111111=3644.41
+THE LENGGHT IS=55.5406
+THE VOLUME NAME IS=liScXslope1_200837
+THE LOCAL DENSITY=1.032
+THE VOLUME IS MIXTURE=
+THE NEXT STEP IS222 =23.8939
+CUrrent node is=T2Rib40_40
+THE STEP IS111111=3668.31
+THE LENGGHT IS=31.6467
+THE VOLUME NAME IS=T2Rib40_40
+THE LOCAL DENSITY=8.02
+THE VOLUME IS MIXTURE=
+THE NEXT STEP IS222 =3.00436
+CUrrent node is=liScXslope1_200869
+THE STEP IS111111=3671.31
+THE LENGGHT IS=28.6423
+THE VOLUME NAME IS=liScXslope1_200869
+THE LOCAL DENSITY=1.032
+THE VOLUME IS MIXTURE=
+THE NEXT STEP IS222 =28.6423
+CUrrent node is=liScXslope1_200869
+THE STEP IS111111=3699.95
+The snext is >>lenght
+THE NEW STEP IS=28.6423
+THE CURRENT NODE=liScXslope1_200869
+THE LENGGHT IS=0
+THE VOLUME NAME IS=liScXslope1_200869
+THE LOCAL DENSITY=1.032
+THE VOLUME IS MIXTURE=
+THE NEXT STEP IS222 =0
+The DENSITY SAVED FROMT THE SIMULATION=0.109713
+Info MuDISGenerator Start prob2int while loop, bparam= 0.109713, 1.09713e+07
+Info MuDISGenerator What was maximum density, mparam[7]= 8.02, 8.02e+08
+Before looping over trahjectoty00x7ffe7a4a0200 I am in the loop
+the random zmu is=-521.377
+Info MuDISGenerator: mat 0, air, 0.001205The Z Random position=-521.377prob2int0
+ I am in the loop
+the random zmu is=444.828
+Info MuDISGenerator: mat 1, air, 0.001205The Z Random position=444.828prob2int0.000150249
+ I am in the loop
+the random zmu is=942.477
+Info MuDISGenerator: mat 2, air, 0.001205The Z Random position=942.477prob2int0.000150249
+ I am in the loop
+the random zmu is=-1697.43
+Info MuDISGenerator: mat 3, air, 0.001205The Z Random position=-1697.43prob2int0.000150249
+ I am in the loop
+the random zmu is=1818.64
+Info MuDISGenerator: mat 4, Scintillator, 1.032The Z Random position=1818.64prob2int0.000150249
+Info MuDISGenerator: prob2int 0.128678, 5
+MuDIS: put position -214.795, 217.76, 1818.64
+THE MEAN DENSITY0.109713THE LENFGT IS=3728.59
+[INFO   ] ***  FairBaseParSet written to ROOT file   version: 1  
+[INFO   ] ***  FairGeoParSet written to ROOT file   version: 1  
+---------------------------------------------------------------------------
+FairBaseContFact:  Factory for parameter containers in libSts
+---------------------------------------------------------------------------
+FairBaseParSet	class for parameter io
+     actual context:  DefaultContext
+FairGeoParSet	class for Geo parameter
+     actual context:  DefaultContext
+---------------------------------------------------------------------------
+ShipPassiveContFact:  Factory for parameter containers in libPassive
+---------------------------------------------------------------------------
+FairGeoPassivePar	Passive Geometry Parameters
+  all contexts:
+     TestDefaultContext	 default
+     TestNonDefaultContext
+---------------------------------------------------------------------------
+vetoContFact:  Factory for parameter containers in libveto
+---------------------------------------------------------------------------
+---------------------------------------------------------------------------
+NutaudetContFact:  Factory for parameter containers in libTauSensitive
+---------------------------------------------------------------------------
+FairGeoTauSensitivePar	TauSensitive Geometry Parameters
+  all contexts:
+     TestDefaultContext	 default
+     TestNonDefaultContext
+---------------------------------------------------------------------------
+strawtubesContFact:  Factory for parameter containers in libstrawtubes
+---------------------------------------------------------------------------
+---------------------------------------------------------------------------
+ecalContFact:  Factory for parameter containers in libecal
+---------------------------------------------------------------------------
+---------------------------------------------------------------------------
+hcalContFact:  Factory for parameter containers in libhcal
+---------------------------------------------------------------------------
+---------------------------------------------------------------------------
+muonContFact:  Factory for parameter containers in libmuon
+---------------------------------------------------------------------------
+--------------------------------------------------------------------------------
+--------------  actual containers in runtime database  -------------------------
+FairBaseParSet                                 class for parameter io
+FairGeoParSet                                  class for Geo parameter
+--------------  runs, versions  ------------------------------------------------
+run id
+  container                                        1st-inp    2nd-inp    output
+run: 1519668321
+  FairBaseParSet                                1519668321         -1          1
+  FairGeoParSet                                 1519668321         -1          1
+--------------  input/output  --------------------------------------------------
+first input: none
+second input: none
+output:
+OBJ: FairParRootFile	./ship.params.conical.muonDIS-TGeant4.root	 : 0 at: 0x56e7a910
+Root file I/O ./ship.params.conical.muonDIS-TGeant4.root is open
+detector I/Os:  FairGenericParIo
+ 
+Macro finished succesfully.
+Output file is  ./ship.conical.muonDIS-TGeant4.root
+Parameter file is  ./ship.params.conical.muonDIS-TGeant4.root
+Real time  67.7261688709  s, CPU time  62.25 s

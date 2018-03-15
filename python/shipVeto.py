@@ -7,7 +7,9 @@ class Task:
  "initialize and give response of the veto systems"
  def __init__(self,t):
   self.UVTefficiency = 0.999 # Upstream Veto tagger: 99.9% efficiency picked up from TP
-  self.SBTefficiency = 0.99  # Surrounding Background tagger: 99% efficiency picked up from TP
+  #self.SBTefficiency = 0.99  # Surrounding Background tagger: 99% efficiency picked up from TP
+  self.SBTefficiency = 0.05  # Surrounding Background tagger: 99% efficiency picked up from TP
+  
   self.SVTefficiency = 0.995 # Straw Veto tagger: guestimate, including dead channels
   self.random = ROOT.TRandom()
   ROOT.gRandom.SetSeed(13)
@@ -126,7 +128,7 @@ class Task:
   aNode = nav.FindNode()
   if aNode: cNode = aNode.GetName()
   if cNode != 'T2decayVol_0' and cNode != 'T1decayVol_0': 
-   distmin = 0. 
+   distmin = 0 
   else:
    for n in range(nSteps):
    # set direction

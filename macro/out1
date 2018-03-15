@@ -1,0 +1,1104 @@
+[?1034hFairShip setup for muonDIS to produce 1 events
+[INFO   ] FairRootManager::OpenOutFile("./ship.conical.muonDIS-TGeant4.root")
+[INFO   ] Media file used: /afs/cern.ch/work/p/pvenkova/my_FairShip/FairShip/geometry/media.geo
+ Mag Spectro Design 1
+MuDIS position info input= -2478.0 2598.0
+[INFO   ] Opening input file /afs/cern.ch/work/p/pvenkova/12collaborationMeeting/muonDis_0.root 
+Generate  1  with DIS input  first event 5000
+[INFO   ] ==============  FairRunSim: Initialising simulation run ==============
+[INFO   ] FairGeoMedia: Read media 
+
+************************************************************* 
+     initialisation for run id 1519657536
+************************************************************* 
+[WARNING] FairField::FillParContainer Should be implemented in User class
+[INFO   ] ---------------User config is used: g4Config.C
+Loading Geant4 libraries (using geant4-config) ...
+33
+Loading VGM libraries ... 
+Loading g4root library ...
+Loading geant4vmc library ...
+Loading mtroot library ...
+
+=============================================================
+ Geant4 Virtual Monte Carlo 
+ Version 3.4 ( 8 March 2017 )
+ WWW : http://root.cern.ch/drupal/content/geant4-vmc
+=============================================================
+
+target at -70.1225m 
+fField  1.8
+Tau Nu Detector fDesign: 1
+tracking stations added
+isMaster=1
+Running TVirtualMCApplication::ConstructGeometry
+*************************************************************
+ Geant4 version Name: geant4-10-03-patch-01    (24-February-2017)
+                      Copyright : Geant4 Collaboration
+                      Reference : NIM A 506 (2003), 250-303
+                            WWW : http://cern.ch/geant4
+*************************************************************
+
+===> GEANT4 materials created and mapped to TGeo ones...
+===> GEANT4 physical volumes created and mapped to TGeo hierarchy...
+### INFO: TG4RootDetectorConstruction::Construct() finished
+TG4PostDetConstruction::Initialize
+G4 Stat: instantiated 1244 logical volumes 
+                      123122 physical volumes
+The tables for UV photon tracking set for H2O
+Adding HadronPhysicsList QGSP_BERT_HP_PEN
+G4PhysListFactory::GetReferencePhysList <QGSP_BERT_HP_PEN>  EMoption= 6
+<<< Geant4 Physics List simulation engine: QGSP_BERT_HP 3.0
+
+
+<<< Reference Physics List QGSP_BERT_HP_PEN is built
+
+Adding SpecialPhysicsList stepLimiter+specialCuts+
+### TG4SpecialControlsV2 constructed
+Visualization Manager instantiating with verbosity "warnings (3)"...
+ -I g4Config() using g4conf  macro: /afs/cern.ch/work/p/pvenkova/my_FairShip/FairShip/gconfig/g4config.in
+You are setting a new verbose level for Particle HP package.
+the new value will be used in whole of the Particle HP package, i.e., models and cross sections for Capture, Elastic, Fission and Inelastic interaction.
+SetCuts Macro: Setting Processes..
+SetCuts Macro: Setting cuts..
+TG4RootDetectorConstruction::ConstructSDandField
+TG4PostDetConstruction::InitializeSDandField
+[INFO   ] Simulation RunID: 1519657536
+### INFO: TG4RootDetectorConstruction::ConstructSDandField finished
+/cvmfs/ship.cern.ch/ShipSoft/FairSoftInst/share/Geant4-10.3.1/data/G4NDL4.5
+@@@ G4ParticleHPInelastic instantiated for particle neutron data directory variable is G4NEUTRONHPDATA pointing to /cvmfs/ship.cern.ch/ShipSoft/FairSoftInst/share/Geant4-10.3.1/data/G4NDL4.5/Inelastic
+@@@ G4ParticleHPInelasticData instantiated for particle neutron data directory variable is G4NEUTRONHPDATA pointing to /cvmfs/ship.cern.ch/ShipSoft/FairSoftInst/share/Geant4-10.3.1/data/G4NDL4.5
+Available UI session types: [ GAG, tcsh, csh ]
+
+**********************************************
+    GEANT4 Geometry statistics: 
+           1244 logical volumes
+          123122 physical volumes
+             34 materials
+             32 user limits
+           1232 sensitive detectors
+**********************************************
+
+[INFO   ] Monte Carlo Engine Initialisation with: TGeant4
+
+GammaToMuPair:  gamma->mu+mu- Bethe Heitler process, SubType= 15
+        good cross section parametrization from 422.633 MeV to 1e+12 GeV for all Z.
+
+AnnihiToMuPair:  e+e->mu+mu- annihilation, atomic e- at rest, SubType=.6
+        threshold at 43.6931 GeV good description up to 1000 TeV for all Z.
+@@@ G4ParticleHPInelastic instantiated for particle neutron data directory variable is G4NEUTRONHPDATA pointing to /cvmfs/ship.cern.ch/ShipSoft/FairSoftInst/share/Geant4-10.3.1/data/G4NDL4.5/Inelastic
+=======================================================================
+======       Pre-compound/De-excitation Physics Parameters     ========
+=======================================================================
+Type of pre-compound inverse x-section              3
+Type of de-excitation inverse x-section             3
+Min excitation energy (keV)                         0.01
+Level density (1/MeV)                               0.1
+Time limit for long lived isomeres (ns)             1000
+Use new data files                                  1
+Use complete data files                             0
+Correlated gamma emission flag                      0
+=======================================================================
+Number of de-excitation channels                    8
+MuDIS: mu xyz position -212.702, 185.356, 1216.58
+MuDIS: mu pxyz position -0.0106624, 0.16508, 3.06712
+MuDIS: mu weight 4975.12
+MuDIS: start position -199.858, -13.4952, -2478
+MuDIS: end position -217.504, 259.707, 2598
+THE TRACK LENGHT BEGINING=5083.38
+THE FIRST NODE IS=cave_1
+ THE MATERIAL SO FAR HAS DENSITY=0
+THE MATERIAL IS NOT MIXTURE0.001205 =0.001205
+THE MATERIAL IS MIXTURE0.499038
+THE STEP MADE IS =3339.52
+The next step and volume=0xd56d1f0
+FLAG TO SEE IF THIS POINT IS ON BOUNDARY0
+CUrrent node is=cave_1
+THE STEP IS111111=3339.52
+THE LENGGHT IS=1743.86
+THE VOLUME NAME IS=cave_1
+THE LOCAL DENSITY=0.001205
+THE VOLUME IS MIXTURE=
+THE NEXT STEP IS222 =124.309
+CUrrent node is=T2Outerwall38_38
+THE STEP IS111111=3463.83
+THE LENGGHT IS=1619.55
+THE VOLUME NAME IS=T2Outerwall38_38
+THE LOCAL DENSITY=2.7
+THE NEXT STEP IS222 =30.5007
+CUrrent node is=cave_1
+THE STEP IS111111=3494.33
+THE LENGGHT IS=1589.05
+THE VOLUME NAME IS=cave_1
+THE LOCAL DENSITY=0.001205
+THE VOLUME IS MIXTURE=
+THE NEXT STEP IS222 =80.8166
+CUrrent node is=T2Hbar39_39
+THE STEP IS111111=3575.14
+THE LENGGHT IS=1508.23
+THE VOLUME NAME IS=T2Hbar39_39
+THE LOCAL DENSITY=8.02
+THE VOLUME IS MIXTURE=
+THE NEXT STEP IS222 =30.0436
+CUrrent node is=cave_1
+THE STEP IS111111=3605.19
+THE LENGGHT IS=1478.19
+THE VOLUME NAME IS=cave_1
+THE LOCAL DENSITY=0.001205
+THE VOLUME IS MIXTURE=
+THE NEXT STEP IS222 =39.224
+CUrrent node is=liScXslope1_200837
+THE STEP IS111111=3644.41
+THE LENGGHT IS=1438.97
+THE VOLUME NAME IS=liScXslope1_200837
+THE LOCAL DENSITY=1.032
+THE VOLUME IS MIXTURE=
+THE NEXT STEP IS222 =23.8939
+CUrrent node is=T2Rib40_40
+THE STEP IS111111=3668.31
+THE LENGGHT IS=1415.07
+THE VOLUME NAME IS=T2Rib40_40
+THE LOCAL DENSITY=8.02
+THE VOLUME IS MIXTURE=
+THE NEXT STEP IS222 =3.00436
+CUrrent node is=liScXslope1_200869
+THE STEP IS111111=3671.31
+THE LENGGHT IS=1412.07
+THE VOLUME NAME IS=liScXslope1_200869
+THE LOCAL DENSITY=1.032
+THE VOLUME IS MIXTURE=
+THE NEXT STEP IS222 =76.6375
+CUrrent node is=T2Rib41_41
+THE STEP IS111111=3747.95
+THE LENGGHT IS=1335.43
+THE VOLUME NAME IS=T2Rib41_41
+THE LOCAL DENSITY=8.02
+THE VOLUME IS MIXTURE=
+THE NEXT STEP IS222 =3.00436
+CUrrent node is=liScXslope1_200901
+THE STEP IS111111=3750.95
+THE LENGGHT IS=1332.43
+THE VOLUME NAME IS=liScXslope1_200901
+THE LOCAL DENSITY=1.032
+THE VOLUME IS MIXTURE=
+THE NEXT STEP IS222 =76.6375
+CUrrent node is=T2Rib42_42
+THE STEP IS111111=3827.59
+THE LENGGHT IS=1255.79
+THE VOLUME NAME IS=T2Rib42_42
+THE LOCAL DENSITY=8.02
+THE VOLUME IS MIXTURE=
+THE NEXT STEP IS222 =3.00436
+CUrrent node is=liScXslope1_200933
+THE STEP IS111111=3830.59
+THE LENGGHT IS=1252.78
+THE VOLUME NAME IS=liScXslope1_200933
+THE LOCAL DENSITY=1.032
+THE VOLUME IS MIXTURE=
+THE NEXT STEP IS222 =76.6375
+CUrrent node is=T2Rib43_43
+THE STEP IS111111=3907.23
+THE LENGGHT IS=1176.15
+THE VOLUME NAME IS=T2Rib43_43
+THE LOCAL DENSITY=8.02
+THE VOLUME IS MIXTURE=
+THE NEXT STEP IS222 =3.00436
+CUrrent node is=liScXslope1_200965
+THE STEP IS111111=3910.24
+THE LENGGHT IS=1173.14
+THE VOLUME NAME IS=liScXslope1_200965
+THE LOCAL DENSITY=1.032
+THE VOLUME IS MIXTURE=
+THE NEXT STEP IS222 =76.6375
+CUrrent node is=T2Rib44_44
+THE STEP IS111111=3986.87
+THE LENGGHT IS=1096.5
+THE VOLUME NAME IS=T2Rib44_44
+THE LOCAL DENSITY=8.02
+THE VOLUME IS MIXTURE=
+THE NEXT STEP IS222 =3.00436
+CUrrent node is=liScXslope1_200997
+THE STEP IS111111=3989.88
+THE LENGGHT IS=1093.5
+THE VOLUME NAME IS=liScXslope1_200997
+THE LOCAL DENSITY=1.032
+THE VOLUME IS MIXTURE=
+THE NEXT STEP IS222 =76.6375
+CUrrent node is=T2Rib45_45
+THE STEP IS111111=4066.52
+THE LENGGHT IS=1016.86
+THE VOLUME NAME IS=T2Rib45_45
+THE LOCAL DENSITY=8.02
+THE VOLUME IS MIXTURE=
+THE NEXT STEP IS222 =3.00436
+CUrrent node is=liScXslope1_201029
+THE STEP IS111111=4069.52
+THE LENGGHT IS=1013.86
+THE VOLUME NAME IS=liScXslope1_201029
+THE LOCAL DENSITY=1.032
+THE VOLUME IS MIXTURE=
+THE NEXT STEP IS222 =76.6375
+CUrrent node is=T2Rib46_46
+THE STEP IS111111=4146.16
+THE LENGGHT IS=937.22
+THE VOLUME NAME IS=T2Rib46_46
+THE LOCAL DENSITY=8.02
+THE VOLUME IS MIXTURE=
+THE NEXT STEP IS222 =3.00436
+CUrrent node is=liScXslope1_201061
+THE STEP IS111111=4149.16
+THE LENGGHT IS=934.216
+THE VOLUME NAME IS=liScXslope1_201061
+THE LOCAL DENSITY=1.032
+THE VOLUME IS MIXTURE=
+THE NEXT STEP IS222 =76.6375
+CUrrent node is=T2Rib47_47
+THE STEP IS111111=4225.8
+THE LENGGHT IS=857.578
+THE VOLUME NAME IS=T2Rib47_47
+THE LOCAL DENSITY=8.02
+THE VOLUME IS MIXTURE=
+THE NEXT STEP IS222 =3.00436
+CUrrent node is=liScXslope1_201093
+THE STEP IS111111=4228.8
+THE LENGGHT IS=854.574
+THE VOLUME NAME IS=liScXslope1_201093
+THE LOCAL DENSITY=1.032
+THE VOLUME IS MIXTURE=
+THE NEXT STEP IS222 =53.3724
+CUrrent node is=phiRib_XY_slope1_1285
+THE STEP IS111111=4282.18
+THE LENGGHT IS=801.202
+THE VOLUME NAME IS=phiRib_XY_slope1_1285
+THE LOCAL DENSITY=0.074
+THE VOLUME IS MIXTURE=
+THE NEXT STEP IS222 =23.2652
+CUrrent node is=T2Rib48_48
+THE STEP IS111111=4305.44
+THE LENGGHT IS=777.936
+THE VOLUME NAME IS=T2Rib48_48
+THE LOCAL DENSITY=8.02
+THE VOLUME IS MIXTURE=
+THE NEXT STEP IS222 =3.00436
+CUrrent node is=phiRib_XY_slope1_1321
+THE STEP IS111111=4308.45
+THE LENGGHT IS=774.932
+THE VOLUME NAME IS=phiRib_XY_slope1_1321
+THE LOCAL DENSITY=0.074
+THE VOLUME IS MIXTURE=
+THE NEXT STEP IS222 =24.2503
+CUrrent node is=liScXslope1_201129
+THE STEP IS111111=4332.7
+THE LENGGHT IS=750.682
+THE VOLUME NAME IS=liScXslope1_201129
+THE LOCAL DENSITY=1.032
+THE VOLUME IS MIXTURE=
+THE NEXT STEP IS222 =52.3872
+CUrrent node is=T2Rib49_49
+THE STEP IS111111=4385.08
+THE LENGGHT IS=698.295
+THE VOLUME NAME IS=T2Rib49_49
+THE LOCAL DENSITY=8.02
+THE VOLUME IS MIXTURE=
+THE NEXT STEP IS222 =3.00436
+CUrrent node is=liScXslope1_201161
+THE STEP IS111111=4388.09
+THE LENGGHT IS=695.29
+THE VOLUME NAME IS=liScXslope1_201161
+THE LOCAL DENSITY=1.032
+THE VOLUME IS MIXTURE=
+THE NEXT STEP IS222 =76.6375
+CUrrent node is=T2Rib50_50
+THE STEP IS111111=4464.72
+THE LENGGHT IS=618.653
+THE VOLUME NAME IS=T2Rib50_50
+THE LOCAL DENSITY=8.02
+THE VOLUME IS MIXTURE=
+THE NEXT STEP IS222 =3.00436
+CUrrent node is=liScXslope1_201193
+THE STEP IS111111=4467.73
+THE LENGGHT IS=615.648
+THE VOLUME NAME IS=liScXslope1_201193
+THE LOCAL DENSITY=1.032
+THE VOLUME IS MIXTURE=
+THE NEXT STEP IS222 =76.6375
+CUrrent node is=T2Rib51_51
+THE STEP IS111111=4544.37
+THE LENGGHT IS=539.011
+THE VOLUME NAME IS=T2Rib51_51
+THE LOCAL DENSITY=8.02
+THE VOLUME IS MIXTURE=
+THE NEXT STEP IS222 =3.00436
+CUrrent node is=liScXslope1_201225
+THE STEP IS111111=4547.37
+THE LENGGHT IS=536.006
+THE VOLUME NAME IS=liScXslope1_201225
+THE LOCAL DENSITY=1.032
+THE VOLUME IS MIXTURE=
+THE NEXT STEP IS222 =76.6375
+CUrrent node is=T2Rib52_52
+THE STEP IS111111=4624.01
+THE LENGGHT IS=459.369
+THE VOLUME NAME IS=T2Rib52_52
+THE LOCAL DENSITY=8.02
+THE VOLUME IS MIXTURE=
+THE NEXT STEP IS222 =3.00436
+CUrrent node is=liScXslope1_201257
+THE STEP IS111111=4627.01
+THE LENGGHT IS=456.365
+THE VOLUME NAME IS=liScXslope1_201257
+THE LOCAL DENSITY=1.032
+THE VOLUME IS MIXTURE=
+THE NEXT STEP IS222 =76.6375
+CUrrent node is=T2Rib53_53
+THE STEP IS111111=4703.65
+THE LENGGHT IS=379.727
+THE VOLUME NAME IS=T2Rib53_53
+THE LOCAL DENSITY=8.02
+THE VOLUME IS MIXTURE=
+THE NEXT STEP IS222 =3.00436
+CUrrent node is=liScXslope1_201289
+THE STEP IS111111=4706.65
+THE LENGGHT IS=376.723
+THE VOLUME NAME IS=liScXslope1_201289
+THE LOCAL DENSITY=1.032
+THE VOLUME IS MIXTURE=
+THE NEXT STEP IS222 =76.6375
+CUrrent node is=T2Rib54_54
+THE STEP IS111111=4783.29
+THE LENGGHT IS=300.085
+THE VOLUME NAME IS=T2Rib54_54
+THE LOCAL DENSITY=8.02
+THE VOLUME IS MIXTURE=
+THE NEXT STEP IS222 =3.00436
+CUrrent node is=liScXslope1_201321
+THE STEP IS111111=4786.3
+THE LENGGHT IS=297.081
+THE VOLUME NAME IS=liScXslope1_201321
+THE LOCAL DENSITY=1.032
+THE VOLUME IS MIXTURE=
+THE NEXT STEP IS222 =1.89313
+CUrrent node is=cave_1
+THE STEP IS111111=4788.19
+THE LENGGHT IS=295.188
+THE VOLUME NAME IS=cave_1
+THE LOCAL DENSITY=0.001205
+THE VOLUME IS MIXTURE=
+THE NEXT STEP IS222 =3.92599
+CUrrent node is=T2Innerwall_0
+THE STEP IS111111=4792.12
+THE LENGGHT IS=291.262
+THE VOLUME NAME IS=T2Innerwall_0
+THE LOCAL DENSITY=8.02
+THE VOLUME IS MIXTURE=
+THE NEXT STEP IS222 =114.378
+CUrrent node is=cave_1
+THE STEP IS111111=4906.49
+THE LENGGHT IS=176.884
+THE VOLUME NAME IS=cave_1
+THE LOCAL DENSITY=0.001205
+THE VOLUME IS MIXTURE=
+THE NEXT STEP IS222 =3.81259
+CUrrent node is=T2decayVol_0
+THE STEP IS111111=4910.31
+THE LENGGHT IS=173.071
+THE VOLUME NAME IS=T2decayVol_0
+THE LOCAL DENSITY=1.205e-06
+THE VOLUME IS MIXTURE=
+THE NEXT STEP IS222 =38.1259
+CUrrent node is=T2decayVolVetoYRect2_1990621
+THE STEP IS111111=4948.43
+THE LENGGHT IS=134.945
+THE VOLUME NAME IS=T2decayVolVetoYRect2_1990621
+THE LOCAL DENSITY=1.032
+THE VOLUME IS MIXTURE=
+THE NEXT STEP IS222 =4.94458
+CUrrent node is=T2decayVolVetoYRect2_1990631
+THE STEP IS111111=4953.38
+THE LENGGHT IS=130.001
+THE VOLUME NAME IS=T2decayVolVetoYRect2_1990631
+THE LOCAL DENSITY=1.032
+THE VOLUME IS MIXTURE=
+THE NEXT STEP IS222 =33.1814
+CUrrent node is=T2decayVol_0
+THE STEP IS111111=4986.56
+THE LENGGHT IS=96.8193
+THE VOLUME NAME IS=T2decayVol_0
+THE LOCAL DENSITY=1.205e-06
+THE VOLUME IS MIXTURE=
+THE NEXT STEP IS222 =38.5642
+CUrrent node is=cave_1
+THE STEP IS111111=5025.12
+THE LENGGHT IS=58.2551
+THE VOLUME NAME IS=cave_1
+THE LOCAL DENSITY=0.001205
+THE VOLUME IS MIXTURE=
+THE NEXT STEP IS222 =0.100145
+CUrrent node is=Tr1_1
+THE STEP IS111111=5025.22
+THE LENGGHT IS=58.155
+THE VOLUME NAME IS=Tr1_1
+THE LOCAL DENSITY=1e-16
+THE NEXT STEP IS222 =2.66246
+CUrrent node is=Tr1_x1_plane_0_layer_0_10000000
+THE STEP IS111111=5027.88
+THE LENGGHT IS=55.4925
+THE VOLUME NAME IS=Tr1_x1_plane_0_layer_0_10000000
+THE LOCAL DENSITY=1e-16
+THE NEXT STEP IS222 =0.984253
+CUrrent node is=Tr1_x1_plane_0_10000000
+THE STEP IS111111=5028.87
+THE LENGGHT IS=54.5083
+THE VOLUME NAME IS=Tr1_x1_plane_0_10000000
+THE LOCAL DENSITY=1e-16
+THE NEXT STEP IS222 =0.11732
+CUrrent node is=Tr1_x1_plane_0_layer_1_10010000
+THE STEP IS111111=5028.99
+THE LENGGHT IS=54.391
+THE VOLUME NAME IS=Tr1_x1_plane_0_layer_1_10010000
+THE LOCAL DENSITY=1e-16
+THE NEXT STEP IS222 =0.000150747
+CUrrent node is=straw_12_10011113
+THE STEP IS111111=5028.99
+THE LENGGHT IS=54.3908
+THE VOLUME NAME IS=straw_12_10011113
+THE LOCAL DENSITY=1.39
+THE VOLUME IS MIXTURE=
+THE NEXT STEP IS222 =0.00390193
+CUrrent node is=Tr1_x1_plane_0_layer_1_10010000
+THE STEP IS111111=5028.99
+THE LENGGHT IS=54.3869
+THE VOLUME NAME IS=Tr1_x1_plane_0_layer_1_10010000
+THE LOCAL DENSITY=1e-16
+THE NEXT STEP IS222 =0.00010005
+CUrrent node is=gas_12_10012113
+THE STEP IS111111=5028.99
+THE LENGGHT IS=54.3868
+THE VOLUME NAME IS=gas_12_10012113
+THE LOCAL DENSITY=0.00336
+THE VOLUME IS MIXTURE=
+THE NEXT STEP IS222 =0.974325
+CUrrent node is=Tr1_x1_plane_0_layer_1_10010000
+THE STEP IS111111=5029.97
+THE LENGGHT IS=53.4125
+THE VOLUME NAME IS=Tr1_x1_plane_0_layer_1_10010000
+THE LOCAL DENSITY=1e-16
+THE NEXT STEP IS222 =0.00010005
+CUrrent node is=straw_12_10011113
+THE STEP IS111111=5029.97
+THE LENGGHT IS=53.4124
+THE VOLUME NAME IS=straw_12_10011113
+THE LOCAL DENSITY=1.39
+THE VOLUME IS MIXTURE=
+THE NEXT STEP IS222 =0.00390193
+CUrrent node is=Tr1_x1_plane_0_layer_1_10010000
+THE STEP IS111111=5029.97
+THE LENGGHT IS=53.4085
+THE VOLUME NAME IS=Tr1_x1_plane_0_layer_1_10010000
+THE LOCAL DENSITY=1e-16
+THE NEXT STEP IS222 =0.00179911
+CUrrent node is=Tr1_1
+THE STEP IS111111=5029.97
+THE LENGGHT IS=53.4067
+THE VOLUME NAME IS=Tr1_1
+THE LOCAL DENSITY=1e-16
+THE NEXT STEP IS222 =0.517927
+CUrrent node is=Tr1_x1_plane_1_layer_0_10100000
+THE STEP IS111111=5030.49
+THE LENGGHT IS=52.8888
+THE VOLUME NAME IS=Tr1_x1_plane_1_layer_0_10100000
+THE LOCAL DENSITY=1e-16
+THE NEXT STEP IS222 =0.159133
+CUrrent node is=straw_12_10101112
+THE STEP IS111111=5030.65
+THE LENGGHT IS=52.7296
+THE VOLUME NAME IS=straw_12_10101112
+THE LOCAL DENSITY=1.39
+THE VOLUME IS MIXTURE=
+THE NEXT STEP IS222 =0.00547381
+CUrrent node is=Tr1_x1_plane_1_layer_0_10100000
+THE STEP IS111111=5030.65
+THE LENGGHT IS=52.7242
+THE VOLUME NAME IS=Tr1_x1_plane_1_layer_0_10100000
+THE LOCAL DENSITY=1e-16
+THE NEXT STEP IS222 =0.000140915
+CUrrent node is=gas_12_10102112
+THE STEP IS111111=5030.65
+THE LENGGHT IS=52.724
+THE VOLUME NAME IS=gas_12_10102112
+THE LOCAL DENSITY=0.00336
+THE VOLUME IS MIXTURE=
+THE NEXT STEP IS222 =0.691703
+CUrrent node is=Tr1_x1_plane_1_layer_0_10100000
+THE STEP IS111111=5031.35
+THE LENGGHT IS=52.0323
+THE VOLUME NAME IS=Tr1_x1_plane_1_layer_0_10100000
+THE LOCAL DENSITY=1e-16
+THE NEXT STEP IS222 =0.000140915
+CUrrent node is=straw_12_10101112
+THE STEP IS111111=5031.35
+THE LENGGHT IS=52.0322
+THE VOLUME NAME IS=straw_12_10101112
+THE LOCAL DENSITY=1.39
+THE VOLUME IS MIXTURE=
+THE NEXT STEP IS222 =0.00547381
+CUrrent node is=Tr1_x1_plane_1_layer_0_10100000
+THE STEP IS111111=5031.35
+THE LENGGHT IS=52.0267
+THE VOLUME NAME IS=Tr1_x1_plane_1_layer_0_10100000
+THE LOCAL DENSITY=1e-16
+THE NEXT STEP IS222 =0.122189
+CUrrent node is=Tr1_x1_plane_1_10100000
+THE STEP IS111111=5031.47
+THE LENGGHT IS=51.9045
+THE VOLUME NAME IS=Tr1_x1_plane_1_10100000
+THE LOCAL DENSITY=1e-16
+THE NEXT STEP IS222 =0.11732
+CUrrent node is=Tr1_x1_plane_1_layer_1_10110000
+THE STEP IS111111=5031.59
+THE LENGGHT IS=51.7872
+THE VOLUME NAME IS=Tr1_x1_plane_1_layer_1_10110000
+THE LOCAL DENSITY=1e-16
+THE NEXT STEP IS222 =0.984278
+CUrrent node is=Tr1_1
+THE STEP IS111111=5032.57
+THE LENGGHT IS=50.8029
+THE VOLUME NAME IS=Tr1_1
+THE LOCAL DENSITY=1e-16
+THE NEXT STEP IS222 =2.66234
+CUrrent node is=Tr1_u_11000000
+THE STEP IS111111=5035.24
+THE LENGGHT IS=48.1406
+THE VOLUME NAME IS=Tr1_u_11000000
+THE LOCAL DENSITY=2.7
+THE NEXT STEP IS222 =0.000100145
+CUrrent node is=Tr1_x1_10000000
+THE STEP IS111111=5035.24
+THE LENGGHT IS=48.1405
+THE VOLUME NAME IS=Tr1_x1_10000000
+THE LOCAL DENSITY=2.7
+THE NEXT STEP IS222 =0.000100145
+CUrrent node is=Tr1_1
+THE STEP IS111111=5035.24
+THE LENGGHT IS=48.1404
+THE VOLUME NAME IS=Tr1_1
+THE LOCAL DENSITY=1e-16
+THE NEXT STEP IS222 =2.66236
+CUrrent node is=Tr1_u_plane_0_layer_0_11000000
+THE STEP IS111111=5037.9
+THE LENGGHT IS=45.478
+THE VOLUME NAME IS=Tr1_u_plane_0_layer_0_11000000
+THE LOCAL DENSITY=1e-16
+THE NEXT STEP IS222 =0.00199939
+CUrrent node is=straw_12_11001102
+THE STEP IS111111=5037.9
+THE LENGGHT IS=45.476
+THE VOLUME NAME IS=straw_12_11001102
+THE LOCAL DENSITY=1.39
+THE VOLUME IS MIXTURE=
+THE NEXT STEP IS222 =0.0039026
+CUrrent node is=Tr1_u_plane_0_layer_0_11000000
+THE STEP IS111111=5037.91
+THE LENGGHT IS=45.4721
+THE VOLUME NAME IS=Tr1_u_plane_0_layer_0_11000000
+THE LOCAL DENSITY=1e-16
+THE NEXT STEP IS222 =0.000100067
+CUrrent node is=gas_12_11002102
+THE STEP IS111111=5037.91
+THE LENGGHT IS=45.472
+THE VOLUME NAME IS=gas_12_11002102
+THE LOCAL DENSITY=0.00336
+THE VOLUME IS MIXTURE=
+THE NEXT STEP IS222 =0.974148
+CUrrent node is=Tr1_u_plane_0_layer_0_11000000
+THE STEP IS111111=5038.88
+THE LENGGHT IS=44.4979
+THE VOLUME NAME IS=Tr1_u_plane_0_layer_0_11000000
+THE LOCAL DENSITY=1e-16
+THE NEXT STEP IS222 =0.000100067
+CUrrent node is=straw_12_11001102
+THE STEP IS111111=5038.88
+THE LENGGHT IS=44.4978
+THE VOLUME NAME IS=straw_12_11001102
+THE LOCAL DENSITY=1.39
+THE VOLUME IS MIXTURE=
+THE NEXT STEP IS222 =0.0039026
+CUrrent node is=Tr1_u_plane_0_layer_0_11000000
+THE STEP IS111111=5038.88
+THE LENGGHT IS=44.4939
+THE VOLUME NAME IS=Tr1_u_plane_0_layer_0_11000000
+THE LOCAL DENSITY=1e-16
+THE NEXT STEP IS222 =0.000100937
+CUrrent node is=Tr1_u_plane_0_11000000
+THE STEP IS111111=5038.88
+THE LENGGHT IS=44.4938
+THE VOLUME NAME IS=Tr1_u_plane_0_11000000
+THE LOCAL DENSITY=1e-16
+THE NEXT STEP IS222 =0.11732
+CUrrent node is=Tr1_u_plane_0_layer_1_11010000
+THE STEP IS111111=5039
+THE LENGGHT IS=44.3764
+THE VOLUME NAME IS=Tr1_u_plane_0_layer_1_11010000
+THE LOCAL DENSITY=1e-16
+THE NEXT STEP IS222 =0.984278
+CUrrent node is=Tr1_1
+THE STEP IS111111=5039.99
+THE LENGGHT IS=43.3922
+THE VOLUME NAME IS=Tr1_1
+THE LOCAL DENSITY=1e-16
+THE NEXT STEP IS222 =0.517927
+CUrrent node is=Tr1_u_plane_1_layer_0_11100000
+THE STEP IS111111=5040.5
+THE LENGGHT IS=42.8742
+THE VOLUME NAME IS=Tr1_u_plane_1_layer_0_11100000
+THE LOCAL DENSITY=1e-16
+THE NEXT STEP IS222 =0.984253
+CUrrent node is=Tr1_u_plane_1_11100000
+THE STEP IS111111=5041.49
+THE LENGGHT IS=41.89
+THE VOLUME NAME IS=Tr1_u_plane_1_11100000
+THE LOCAL DENSITY=1e-16
+THE NEXT STEP IS222 =0.11732
+CUrrent node is=Tr1_u_plane_1_layer_1_11110000
+THE STEP IS111111=5041.6
+THE LENGGHT IS=41.7727
+THE VOLUME NAME IS=Tr1_u_plane_1_layer_1_11110000
+THE LOCAL DENSITY=1e-16
+THE NEXT STEP IS222 =0.0878156
+CUrrent node is=straw_12_11111102
+THE STEP IS111111=5041.69
+THE LENGGHT IS=41.6848
+THE VOLUME NAME IS=straw_12_11111102
+THE LOCAL DENSITY=1.39
+THE VOLUME IS MIXTURE=
+THE NEXT STEP IS222 =0.00458927
+CUrrent node is=Tr1_u_plane_1_layer_1_11110000
+THE STEP IS111111=5041.7
+THE LENGGHT IS=41.6802
+THE VOLUME NAME IS=Tr1_u_plane_1_layer_1_11110000
+THE LOCAL DENSITY=1e-16
+THE NEXT STEP IS222 =0.00011786
+CUrrent node is=gas_12_11112102
+THE STEP IS111111=5041.7
+THE LENGGHT IS=41.6801
+THE VOLUME NAME IS=gas_12_11112102
+THE LOCAL DENSITY=0.00336
+THE VOLUME IS MIXTURE=
+THE NEXT STEP IS222 =0.827054
+CUrrent node is=Tr1_u_plane_1_layer_1_11110000
+THE STEP IS111111=5042.52
+THE LENGGHT IS=40.8531
+THE VOLUME NAME IS=Tr1_u_plane_1_layer_1_11110000
+THE LOCAL DENSITY=1e-16
+THE NEXT STEP IS222 =0.00011786
+CUrrent node is=straw_12_11111102
+THE STEP IS111111=5042.52
+THE LENGGHT IS=40.853
+THE VOLUME NAME IS=straw_12_11111102
+THE LOCAL DENSITY=1.39
+THE VOLUME IS MIXTURE=
+THE NEXT STEP IS222 =0.00458927
+CUrrent node is=Tr1_u_plane_1_layer_1_11110000
+THE STEP IS111111=5042.53
+THE LENGGHT IS=40.8484
+THE VOLUME NAME IS=Tr1_u_plane_1_layer_1_11110000
+THE LOCAL DENSITY=1e-16
+THE NEXT STEP IS222 =0.0599945
+CUrrent node is=Tr1_1
+THE STEP IS111111=5042.59
+THE LENGGHT IS=40.7884
+THE VOLUME NAME IS=Tr1_1
+THE LOCAL DENSITY=1e-16
+THE NEXT STEP IS222 =2.66244
+CUrrent node is=Tr1_u_11000000
+THE STEP IS111111=5045.25
+THE LENGGHT IS=38.1259
+THE VOLUME NAME IS=Tr1_u_11000000
+THE LOCAL DENSITY=2.7
+THE NEXT STEP IS222 =0.000100145
+CUrrent node is=Tr1_1
+THE STEP IS111111=5045.25
+THE LENGGHT IS=38.1258
+THE VOLUME NAME IS=Tr1_1
+THE LOCAL DENSITY=1e-16
+THE NEXT STEP IS222 =10.0143
+CUrrent node is=Tr1_x2_13000000
+THE STEP IS111111=5055.27
+THE LENGGHT IS=28.1115
+THE VOLUME NAME IS=Tr1_x2_13000000
+THE LOCAL DENSITY=2.7
+THE NEXT STEP IS222 =0.000100145
+CUrrent node is=Tr1_1
+THE STEP IS111111=5055.27
+THE LENGGHT IS=28.1114
+THE VOLUME NAME IS=Tr1_1
+THE LOCAL DENSITY=1e-16
+THE NEXT STEP IS222 =2.66246
+CUrrent node is=Tr1_x2_plane_0_layer_0_13000000
+THE STEP IS111111=5057.93
+THE LENGGHT IS=25.4489
+THE VOLUME NAME IS=Tr1_x2_plane_0_layer_0_13000000
+THE LOCAL DENSITY=1e-16
+THE NEXT STEP IS222 =0.984253
+CUrrent node is=Tr1_x2_plane_0_13000000
+THE STEP IS111111=5058.91
+THE LENGGHT IS=24.4647
+THE VOLUME NAME IS=Tr1_x2_plane_0_13000000
+THE LOCAL DENSITY=1e-16
+THE NEXT STEP IS222 =0.11732
+CUrrent node is=Tr1_x2_plane_0_layer_1_13010000
+THE STEP IS111111=5059.03
+THE LENGGHT IS=24.3474
+THE VOLUME NAME IS=Tr1_x2_plane_0_layer_1_13010000
+THE LOCAL DENSITY=1e-16
+THE NEXT STEP IS222 =0.025177
+CUrrent node is=straw_12_13011112
+THE STEP IS111111=5059.06
+THE LENGGHT IS=24.3222
+THE VOLUME NAME IS=straw_12_13011112
+THE LOCAL DENSITY=1.39
+THE VOLUME IS MIXTURE=
+THE NEXT STEP IS222 =0.00404487
+CUrrent node is=Tr1_x2_plane_0_layer_1_13010000
+THE STEP IS111111=5059.06
+THE LENGGHT IS=24.3181
+THE VOLUME NAME IS=Tr1_x2_plane_0_layer_1_13010000
+THE LOCAL DENSITY=1e-16
+THE NEXT STEP IS222 =0.000103747
+CUrrent node is=gas_12_13012112
+THE STEP IS111111=5059.06
+THE LENGGHT IS=24.318
+THE VOLUME NAME IS=gas_12_13012112
+THE LOCAL DENSITY=0.00336
+THE VOLUME IS MIXTURE=
+THE NEXT STEP IS222 =0.9396
+CUrrent node is=Tr1_x2_plane_0_layer_1_13010000
+THE STEP IS111111=5060
+THE LENGGHT IS=23.3784
+THE VOLUME NAME IS=Tr1_x2_plane_0_layer_1_13010000
+THE LOCAL DENSITY=1e-16
+THE NEXT STEP IS222 =0.000103747
+CUrrent node is=straw_12_13011112
+THE STEP IS111111=5060
+THE LENGGHT IS=23.3783
+THE VOLUME NAME IS=straw_12_13011112
+THE LOCAL DENSITY=1.39
+THE VOLUME IS MIXTURE=
+THE NEXT STEP IS222 =0.00404487
+CUrrent node is=Tr1_x2_plane_0_layer_1_13010000
+THE STEP IS111111=5060
+THE LENGGHT IS=23.3743
+THE VOLUME NAME IS=Tr1_x2_plane_0_layer_1_13010000
+THE LOCAL DENSITY=1e-16
+THE NEXT STEP IS222 =0.0112041
+CUrrent node is=Tr1_1
+THE STEP IS111111=5060.01
+THE LENGGHT IS=23.3631
+THE VOLUME NAME IS=Tr1_1
+THE LOCAL DENSITY=1e-16
+THE NEXT STEP IS222 =0.517927
+CUrrent node is=Tr1_x2_plane_1_layer_0_13100000
+THE STEP IS111111=5060.53
+THE LENGGHT IS=22.8452
+THE VOLUME NAME IS=Tr1_x2_plane_1_layer_0_13100000
+THE LOCAL DENSITY=1e-16
+THE NEXT STEP IS222 =0.465581
+CUrrent node is=straw_12_13101111
+THE STEP IS111111=5061
+THE LENGGHT IS=22.3796
+THE VOLUME NAME IS=straw_12_13101111
+THE LOCAL DENSITY=1.39
+THE VOLUME IS MIXTURE=
+THE NEXT STEP IS222 =0.105656
+CUrrent node is=Tr1_x2_plane_1_layer_0_13100000
+THE STEP IS111111=5061.1
+THE LENGGHT IS=22.2739
+THE VOLUME NAME IS=Tr1_x2_plane_1_layer_0_13100000
+THE LOCAL DENSITY=1e-16
+THE NEXT STEP IS222 =0.413016
+CUrrent node is=Tr1_x2_plane_1_13100000
+THE STEP IS111111=5061.52
+THE LENGGHT IS=21.8609
+THE VOLUME NAME IS=Tr1_x2_plane_1_13100000
+THE LOCAL DENSITY=1e-16
+THE NEXT STEP IS222 =0.11732
+CUrrent node is=Tr1_x2_plane_1_layer_1_13110000
+THE STEP IS111111=5061.63
+THE LENGGHT IS=21.7436
+THE VOLUME NAME IS=Tr1_x2_plane_1_layer_1_13110000
+THE LOCAL DENSITY=1e-16
+THE NEXT STEP IS222 =0.268938
+CUrrent node is=straw_12_13111112
+THE STEP IS111111=5061.9
+THE LENGGHT IS=21.4746
+THE VOLUME NAME IS=straw_12_13111112
+THE LOCAL DENSITY=1.39
+THE VOLUME IS MIXTURE=
+THE NEXT STEP IS222 =0.00983444
+CUrrent node is=Tr1_x2_plane_1_layer_1_13110000
+THE STEP IS111111=5061.91
+THE LENGGHT IS=21.4648
+THE VOLUME NAME IS=Tr1_x2_plane_1_layer_1_13110000
+THE LOCAL DENSITY=1e-16
+THE NEXT STEP IS222 =0.000257838
+CUrrent node is=gas_12_13112112
+THE STEP IS111111=5061.91
+THE LENGGHT IS=21.4646
+THE VOLUME NAME IS=gas_12_13112112
+THE LOCAL DENSITY=0.00336
+THE VOLUME IS MIXTURE=
+THE NEXT STEP IS222 =0.377853
+CUrrent node is=Tr1_x2_plane_1_layer_1_13110000
+THE STEP IS111111=5062.29
+THE LENGGHT IS=21.0867
+THE VOLUME NAME IS=Tr1_x2_plane_1_layer_1_13110000
+THE LOCAL DENSITY=1e-16
+THE NEXT STEP IS222 =0.000257838
+CUrrent node is=straw_12_13111112
+THE STEP IS111111=5062.29
+THE LENGGHT IS=21.0864
+THE VOLUME NAME IS=straw_12_13111112
+THE LOCAL DENSITY=1.39
+THE VOLUME IS MIXTURE=
+THE NEXT STEP IS222 =0.00983444
+CUrrent node is=Tr1_x2_plane_1_layer_1_13110000
+THE STEP IS111111=5062.3
+THE LENGGHT IS=21.0766
+THE VOLUME NAME IS=Tr1_x2_plane_1_layer_1_13110000
+THE LOCAL DENSITY=1e-16
+THE NEXT STEP IS222 =0.317303
+CUrrent node is=Tr1_1
+THE STEP IS111111=5062.62
+THE LENGGHT IS=20.7593
+THE VOLUME NAME IS=Tr1_1
+THE LOCAL DENSITY=1e-16
+THE NEXT STEP IS222 =2.66244
+CUrrent node is=cave_1
+THE STEP IS111111=5065.28
+THE LENGGHT IS=18.0969
+THE VOLUME NAME IS=cave_1
+THE LOCAL DENSITY=0.001205
+THE VOLUME IS MIXTURE=
+THE NEXT STEP IS222 =0.100145
+CUrrent node is=T3decayVol_0
+THE STEP IS111111=5065.38
+THE LENGGHT IS=17.9967
+THE VOLUME NAME IS=T3decayVol_0
+THE LOCAL DENSITY=1.205e-06
+THE VOLUME IS MIXTURE=
+THE NEXT STEP IS222 =17.9967
+CUrrent node is=T3decayVol_0
+THE STEP IS111111=5083.38
+The MEAN DENSITY=0.537893
+Info MuDISGenerator Start prob2int while loop, bparam= 0.537893, 5.37893e+07
+Info MuDISGenerator What was maximum density, mparam[7]= 8.02, 8.02e+08
+Before looping over trahjectoty00x7ffd9c0e9660 I am in the loop
+the random zmu is=-1749.59
+Info MuDISGenerator: mat 0, air, 0.001205The Z Random position=-1749.59prob2int0
+ I am in the loop
+the random zmu is=1688.08
+Info MuDISGenerator: mat 1, Scintillator, 1.032The Z Random position=1688.08prob2int0.000150249
+ I am in the loop
+the random zmu is=1976.17
+Info MuDISGenerator: mat 2, Scintillator, 1.032The Z Random position=1976.17prob2int0.128678
+ I am in the loop
+the random zmu is=905.114
+Info MuDISGenerator: mat 3, air, 0.001205The Z Random position=905.114prob2int0.128678
+ I am in the loop
+the random zmu is=1008.56
+Info MuDISGenerator: mat 4, air, 0.001205The Z Random position=1008.56prob2int0.000150249
+ I am in the loop
+the random zmu is=277.036
+Info MuDISGenerator: mat 5, air, 0.001205The Z Random position=277.036prob2int0.000150249
+ I am in the loop
+the random zmu is=-25.9966
+Info MuDISGenerator: mat 6, air, 0.001205The Z Random position=-25.9966prob2int0.000150249
+ I am in the loop
+the random zmu is=-1845.06
+Info MuDISGenerator: mat 7, air, 0.001205The Z Random position=-1845.06prob2int0.000150249
+ I am in the loop
+the random zmu is=-1444.98
+Info MuDISGenerator: mat 8, air, 0.001205The Z Random position=-1444.98prob2int0.000150249
+ I am in the loop
+the random zmu is=-2403.16
+Info MuDISGenerator: mat 9, air, 0.001205The Z Random position=-2403.16prob2int0.000150249
+ I am in the loop
+the random zmu is=1617.66
+Info MuDISGenerator: mat 10, Scintillator, 1.032The Z Random position=1617.66prob2int0.000150249
+ I am in the loop
+the random zmu is=1293.53
+Info MuDISGenerator: mat 11, Scintillator, 1.032The Z Random position=1293.53prob2int0.128678
+ I am in the loop
+the random zmu is=1676.91
+Info MuDISGenerator: mat 12, Scintillator, 1.032The Z Random position=1676.91prob2int0.128678
+ I am in the loop
+the random zmu is=456.17
+Info MuDISGenerator: mat 13, air, 0.001205The Z Random position=456.17prob2int0.128678
+ I am in the loop
+the random zmu is=502.01
+Info MuDISGenerator: mat 14, air, 0.001205The Z Random position=502.01prob2int0.000150249
+ I am in the loop
+the random zmu is=757.514
+Info MuDISGenerator: mat 15, air, 0.001205The Z Random position=757.514prob2int0.000150249
+ I am in the loop
+the random zmu is=-2192.49
+Info MuDISGenerator: mat 16, air, 0.001205The Z Random position=-2192.49prob2int0.000150249
+ I am in the loop
+the random zmu is=-1009.14
+Info MuDISGenerator: mat 17, air, 0.001205The Z Random position=-1009.14prob2int0.000150249
+ I am in the loop
+the random zmu is=1841.44
+Info MuDISGenerator: mat 18, polypropylene, 0.074The Z Random position=1841.44prob2int0.000150249
+ I am in the loop
+the random zmu is=-1923.97
+Info MuDISGenerator: mat 19, air, 0.001205The Z Random position=-1923.97prob2int0.00922693
+ I am in the loop
+the random zmu is=2131.66
+Info MuDISGenerator: mat 20, Scintillator, 1.032The Z Random position=2131.66prob2int0.000150249
+ I am in the loop
+the random zmu is=18.281
+Info MuDISGenerator: mat 21, air, 0.001205The Z Random position=18.281prob2int0.128678
+ I am in the loop
+the random zmu is=2570.41
+Info MuDISGenerator: mat 22, vacuums, 1.205e-06The Z Random position=2570.41prob2int0.000150249
+ I am in the loop
+the random zmu is=-310.786
+Info MuDISGenerator: mat 23, air, 0.001205The Z Random position=-310.786prob2int1.50249e-07
+ I am in the loop
+the random zmu is=-1768.71
+Info MuDISGenerator: mat 24, air, 0.001205The Z Random position=-1768.71prob2int0.000150249
+ I am in the loop
+the random zmu is=714.092
+Info MuDISGenerator: mat 25, air, 0.001205The Z Random position=714.092prob2int0.000150249
+ I am in the loop
+the random zmu is=805.878
+Info MuDISGenerator: mat 26, air, 0.001205The Z Random position=805.878prob2int0.000150249
+ I am in the loop
+the random zmu is=1857.87
+Info MuDISGenerator: mat 27, polypropylene, 0.074The Z Random position=1857.87prob2int0.000150249
+ I am in the loop
+the random zmu is=-785.187
+Info MuDISGenerator: mat 28, air, 0.001205The Z Random position=-785.187prob2int0.00922693
+ I am in the loop
+the random zmu is=-2132.71
+Info MuDISGenerator: mat 29, air, 0.001205The Z Random position=-2132.71prob2int0.000150249
+ I am in the loop
+the random zmu is=1495.58
+Info MuDISGenerator: mat 30, Scintillator, 1.032The Z Random position=1495.58prob2int0.000150249
+ I am in the loop
+the random zmu is=-524.865
+Info MuDISGenerator: mat 31, air, 0.001205The Z Random position=-524.865prob2int0.128678
+ I am in the loop
+the random zmu is=684.079
+Info MuDISGenerator: mat 32, air, 0.001205The Z Random position=684.079prob2int0.000150249
+ I am in the loop
+the random zmu is=-15.0638
+Info MuDISGenerator: mat 33, air, 0.001205The Z Random position=-15.0638prob2int0.000150249
+ I am in the loop
+the random zmu is=-2386.56
+Info MuDISGenerator: mat 34, air, 0.001205The Z Random position=-2386.56prob2int0.000150249
+ I am in the loop
+the random zmu is=-2461.69
+Info MuDISGenerator: mat 35, air, 0.001205The Z Random position=-2461.69prob2int0.000150249
+ I am in the loop
+the random zmu is=1103.06
+Info MuDISGenerator: mat 36, air, 0.001205The Z Random position=1103.06prob2int0.000150249
+ I am in the loop
+the random zmu is=2467.88
+Info MuDISGenerator: mat 37, vacuums, 1.205e-06The Z Random position=2467.88prob2int0.000150249
+ I am in the loop
+the random zmu is=729.412
+Info MuDISGenerator: mat 38, air, 0.001205The Z Random position=729.412prob2int1.50249e-07
+ I am in the loop
+the random zmu is=1269.71
+Info MuDISGenerator: mat 39, Scintillator, 1.032The Z Random position=1269.71prob2int0.000150249
+ I am in the loop
+the random zmu is=819.555
+Info MuDISGenerator: mat 40, air, 0.001205The Z Random position=819.555prob2int0.128678
+ I am in the loop
+the random zmu is=-1906.14
+Info MuDISGenerator: mat 41, air, 0.001205The Z Random position=-1906.14prob2int0.000150249
+ I am in the loop
+the random zmu is=-539.783
+Info MuDISGenerator: mat 42, air, 0.001205The Z Random position=-539.783prob2int0.000150249
+ I am in the loop
+the random zmu is=491.241
+Info MuDISGenerator: mat 43, air, 0.001205The Z Random position=491.241prob2int0.000150249
+ I am in the loop
+the random zmu is=1673.41
+Info MuDISGenerator: mat 44, Scintillator, 1.032The Z Random position=1673.41prob2int0.000150249
+ I am in the loop
+the random zmu is=-897.796
+Info MuDISGenerator: mat 45, air, 0.001205The Z Random position=-897.796prob2int0.128678
+ I am in the loop
+the random zmu is=-625.565
+Info MuDISGenerator: mat 46, air, 0.001205The Z Random position=-625.565prob2int0.000150249
+ I am in the loop
+the random zmu is=-271.144
+Info MuDISGenerator: mat 47, air, 0.001205The Z Random position=-271.144prob2int0.000150249
+ I am in the loop
+the random zmu is=2376.31
+Info MuDISGenerator: mat 48, steel, 8.02The Z Random position=2376.31prob2int0.000150249
+Info MuDISGenerator: prob2int 1, 49
+MuDIS: put position -216.733, 247.775, 2376.31
+THE MEAN DENSITY0.537893THE LENFGT IS=5083.38
+[INFO   ] ***  FairBaseParSet written to ROOT file   version: 1  
+[INFO   ] ***  FairGeoParSet written to ROOT file   version: 1  
+---------------------------------------------------------------------------
+FairBaseContFact:  Factory for parameter containers in libSts
+---------------------------------------------------------------------------
+FairBaseParSet	class for parameter io
+     actual context:  DefaultContext
+FairGeoParSet	class for Geo parameter
+     actual context:  DefaultContext
+---------------------------------------------------------------------------
+ShipPassiveContFact:  Factory for parameter containers in libPassive
+---------------------------------------------------------------------------
+FairGeoPassivePar	Passive Geometry Parameters
+  all contexts:
+     TestDefaultContext	 default
+     TestNonDefaultContext
+---------------------------------------------------------------------------
+vetoContFact:  Factory for parameter containers in libveto
+---------------------------------------------------------------------------
+---------------------------------------------------------------------------
+NutaudetContFact:  Factory for parameter containers in libTauSensitive
+---------------------------------------------------------------------------
+FairGeoTauSensitivePar	TauSensitive Geometry Parameters
+  all contexts:
+     TestDefaultContext	 default
+     TestNonDefaultContext
+---------------------------------------------------------------------------
+strawtubesContFact:  Factory for parameter containers in libstrawtubes
+---------------------------------------------------------------------------
+---------------------------------------------------------------------------
+ecalContFact:  Factory for parameter containers in libecal
+---------------------------------------------------------------------------
+---------------------------------------------------------------------------
+hcalContFact:  Factory for parameter containers in libhcal
+---------------------------------------------------------------------------
+---------------------------------------------------------------------------
+muonContFact:  Factory for parameter containers in libmuon
+---------------------------------------------------------------------------
+--------------------------------------------------------------------------------
+--------------  actual containers in runtime database  -------------------------
+FairBaseParSet                                 class for parameter io
+FairGeoParSet                                  class for Geo parameter
+--------------  runs, versions  ------------------------------------------------
+run id
+  container                                        1st-inp    2nd-inp    output
+run: 1519657536
+  FairBaseParSet                                1519657536         -1          1
+  FairGeoParSet                                 1519657536         -1          1
+--------------  input/output  --------------------------------------------------
+first input: none
+second input: none
+output:
+OBJ: FairParRootFile	./ship.params.conical.muonDIS-TGeant4.root	 : 0 at: 0x56190f70
+Root file I/O ./ship.params.conical.muonDIS-TGeant4.root is open
+detector I/Os:  FairGenericParIo
+ 
+Macro finished succesfully.
+Output file is  ./ship.conical.muonDIS-TGeant4.root
+Parameter file is  ./ship.params.conical.muonDIS-TGeant4.root
+Real time  70.1131849289  s, CPU time  63.97 s

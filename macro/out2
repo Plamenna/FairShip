@@ -1,0 +1,4 @@
+[?1034hFairShip setup for muonDIS to produce 1 events
+[INFO   ] FairRootManager::OpenOutFile("./ship.conical.muonDIS-TGeant4.root")
+[INFO   ] Media file used: /afs/cern.ch/work/p/pvenkova/my_FairShip/FairShip/geometry/media.geo
+ Mag Spectro Design 1
