@@ -15,7 +15,7 @@ theDPmass = 0.2*u.GeV
 theDPepsilon = 0.00000008
 
 mcEngine     = "TGeant4"
-simEngine    = "Pythia8"  # "Genie" # Ntuple
+simEngine    = "MuonBack"  # "Genie" # Ntuple
 nEvents      = 100
 firstEvent   = 0
 inclusive    = "c"    # True = all processes if "c" only ccbar -> HNL, if "b" only bbar -> HNL, and for darkphotons: if meson = production through meson decays, pbrem = proton bremstrahlung, to do: QCD prod.
@@ -39,13 +39,13 @@ sameSeed     = False # can be set to an integer for the muonBackground simulatio
 theSeed      = int(10000 * time.time() % 10000000)
 
 dy           = 10.
-dv           = 5 # 4=TP elliptical tank design, 5 = optimized conical rectangular design, 6=5 without segment-1
-ds           = 7 # 5=TP muon shield, 6=magnetized hadron, 7=short magnet design 
-nud          = 1 # 0=TP, 1=new magnet option for short muon shield, 2= no magnet surrounding neutrino detector
+dv           = 6 # 4=TP elliptical tank design, 5 = optimized conical rectangular design, 6=5 without segment-1
+ds           = 8 # 5=TP muon shield, 6=magnetized hadron, 7=short magnet design 
+nud          = 3#3# for iSHiP 1 # 0=TP, 1=new magnet option for short muon shield, 2= no magnet surrounding neutrino detector
 charm        = 0 # !=0 create charm detector instead of SHiP
 caloDesign   = 0 # 0=ECAL/HCAL TP  1=ECAL/HCAL TP + preshower 2=splitCal
-geofile = None
-
+#geofile = None
+geofile="/eos/experiment/ship/user/olantwin/previous_run_rounded.params.root"
 inactivateMuonProcesses = False   # provisionally for making studies of various muon background sources
 checking4overlaps = False
 if debug>1 : checking4overlaps = True

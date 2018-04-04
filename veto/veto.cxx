@@ -484,7 +484,9 @@ TGeoVolume* veto::MakeSegments(Int_t seg,Double_t dz,Double_t dx_start,Double_t 
       //if (seg!=4 && seg!=6){  old, now only LiSc before T1, i.e. seg==3
       if (seg<3){
        //dcorner+=f_InnerSupportThickness; //already the right corner radius == as outside of ribs
-       Double_t wL = 0.5*m;//width of liqued scintilator
+       Double_t wL =1*m;//width of liqued scintilator the old geometry
+
+       //Double_t wL = 0.5*m;//width of liqued scintilator the old geometry
        Double_t wLscale = 1.7;
        Double_t wR = f_PhiRibsThickness;
        int nRx = 1;
