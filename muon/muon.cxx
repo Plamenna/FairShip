@@ -223,9 +223,9 @@ void muon::ConstructGeometry()
     TGeoVolume *muondet2 = gGeoManager->MakeBox("muondet2", Al, fXMax, fYMax, fActiveThickness); 
     TGeoVolume *muondet3 = gGeoManager->MakeBox("muondet3", Al, fXMax, fYMax, fActiveThickness); 
     
-    TGeoVolume *muonfilter0 = gGeoManager->MakeBox("muonfilter0", A2, fXMax, fYMax, fFilterThickness);
-    TGeoVolume *muonfilter1 = gGeoManager->MakeBox("muonfilter1", A2, fXMax, fYMax, fFilterThickness);
-    TGeoVolume *muonfilter2 = gGeoManager->MakeBox("muonfilter2", A2, fXMax, fYMax, fFilterThickness);
+    TGeoVolume *muonfilter = gGeoManager->MakeBox("muonfilter", A2, fXMax, fYMax, fFilterThickness);
+// 10cm iron to shield against backsplash from cavern
+    TGeoVolume *muonshield = gGeoManager->MakeBox("muonshield", A2, fXMax, fYMax, 5.);
 
     AddSensitiveVolume(muondet0);
     AddSensitiveVolume(muondet1);
@@ -235,21 +235,20 @@ void muon::ConstructGeometry()
     muondet1->SetLineColor(kGreen);
     muondet2->SetLineColor(kGreen);
     muondet3->SetLineColor(kGreen);
-    muonfilter0->SetLineColor(kBlue);
-    muonfilter1->SetLineColor(kBlue);
-    muonfilter2->SetLineColor(kBlue);
+    muonfilter->SetLineColor(kBlue);
     Double_t zStartMuon = fM0z;
-    tMuon->AddNode(muondet0, 1, new TGeoTranslation(0, 0, fM0z-zStartMuon));
-    tMuon->AddNode(muonfilter0, 1, new TGeoTranslation(0, 0, fF0z-zStartMuon));
-    tMuon->AddNode(muondet1, 1, new TGeoTranslation(0, 0, fM1z-zStartMuon));
-    tMuon->AddNode(muonfilter1, 1, new TGeoTranslation(0, 0, fF1z-zStartMuon));
-    tMuon->AddNode(muondet2, 1, new TGeoTranslation(0, 0, fM2z-zStartMuon));
-    tMuon->AddNode(muonfilter2, 1, new TGeoTranslation(0, 0, fF2z-zStartMuon));
-    tMuon->AddNode(muondet3, 1, new TGeoTranslation(0, 0, fM3z-zStartMuon));
+    Double_t totLength = fM3z-fM0z+2*fActiveThickness+15.;
+    Double_t relPos = zStartMuon-fActiveThickness+totLength/2.;
+    tMuon->AddNode(muondet0, 1, new TGeoTranslation(0, 0, fM0z-relPos));
+    tMuon->AddNode(muonfilter, 0, new TGeoTranslation(0, 0, fF0z-relPos));
+    tMuon->AddNode(muondet1, 1, new TGeoTranslation(0, 0, fM1z-relPos));
+    tMuon->AddNode(muonfilter, 1, new TGeoTranslation(0, 0, fF1z-relPos));
+    tMuon->AddNode(muondet2, 1, new TGeoTranslation(0, 0, fM2z-relPos));
+    tMuon->AddNode(muonfilter, 2, new TGeoTranslation(0, 0, fF2z-relPos));
+    tMuon->AddNode(muondet3, 1, new TGeoTranslation(0, 0, fM3z-relPos));
+    tMuon->AddNode(muonshield, 1, new TGeoTranslation(0, 0, fM3z+fActiveThickness+10.-relPos));
           //finish assembly and position
-    TGeoShapeAssembly* asmb = dynamic_cast<TGeoShapeAssembly*>(tMuon->GetShape());
-    Double_t totLength = asmb->GetDZ();
-    top->AddNode(tMuon, 1, new TGeoTranslation(0, 0,zStartMuon+totLength));  
+    top->AddNode(tMuon, 1, new TGeoTranslation(0, 0,relPos));
 }
 
 muonPoint* muon::AddHit(Int_t trackID, Int_t detID,

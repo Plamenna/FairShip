@@ -107,12 +107,13 @@ Bool_t MuonBackGenerator::ReadEvent(FairPrimaryGenerator* cpg)
          vetoPoint *v = (vetoPoint*)vetoPoints->At(i); 
          if (abs(v->PdgCode())==13){found = true;
            muList.push_back(v->GetTrackID());
-            } 
-     }                     
+            }
+     }
+     if (!found) {fLogger->Warning(MESSAGE_ORIGIN, "no muon found %i",fn-1);}
      if (found) {break;}
    }
   }
-  if (fn==fNevents){ 
+  if (fn>fNevents-1){ 
      fLogger->Info(MESSAGE_ORIGIN,"End of file reached %i",fNevents);
      return kFALSE;
   } 
@@ -124,31 +125,12 @@ Bool_t MuonBackGenerator::ReadEvent(FairPrimaryGenerator* cpg)
   if (fPhiRandomize){phi = gRandom->Uniform(0.,2.) * TMath::Pi();}
   if (fsmearBeam > 0) {
      Double_t r = fsmearBeam + 0.8 * gRandom->Gaus();
-     phi = gRandom->Uniform(0., 2.) * TMath::Pi();
-     dx = r * TMath::Cos(phi);
-     dy = r * TMath::Sin(phi);
+     Double_t _phi = gRandom->Uniform(0., 2.) * TMath::Pi();
+     dx = r * TMath::Cos(_phi);
+     dy = r * TMath::Sin(_phi);
   }
   if (id==-1){
-     std::vector<int> partList;
-     for (int k = 0; k < vetoPoints->GetEntries(); k++) {
-         vetoPoint *v = (vetoPoint*)vetoPoints->At(k); 
-         if (abs(v->PdgCode())==13){
-            partList.push_back(v->GetTrackID());
-            ShipMCTrack* track =  (ShipMCTrack*)MCTrack->At(v->GetTrackID());
-            Int_t mother = track->GetMotherId();
-            while (mother>0){
-              track = (ShipMCTrack*)(MCTrack->At(mother));  
-              mother = track->GetMotherId();
-              partList.push_back(mother);
-            }
-         }  
-     }
-     for (unsigned i = MCTrack->GetEntries(); i-- > 0; ){
-       Bool_t wanted = false;
-       if(std::find(partList.begin(), partList.end(), i) != partList.end()) {
-         wanted = true;
-       } 
-       if (!wanted){continue;}
+     for (unsigned i = 0; i< MCTrack->GetEntries();  i++ ){
        ShipMCTrack* track = (ShipMCTrack*)MCTrack->At(i);
        px = track->GetPx();
        py = track->GetPy();
@@ -159,17 +141,17 @@ Bool_t MuonBackGenerator::ReadEvent(FairPrimaryGenerator* cpg)
         px = pt*TMath::Cos(phi+phi0);
         py = pt*TMath::Sin(phi+phi0);
        }
-       vx = track->GetStartX()+dx; 
-       vy = track->GetStartY()+dy; 
-       vz = track->GetStartZ(); 
+       vx = track->GetStartX()+dx;
+       vy = track->GetStartY()+dy;
+       vz = track->GetStartZ();
        tof =  track->GetStartT();
        e = track->GetEnergy();
        Bool_t wanttracking = false; // only transport muons
        if(std::find(muList.begin(), muList.end(), i) != muList.end()) {
          wanttracking = true;
        }
-       cpg->AddTrack(track->GetPdgCode(),px,py,pz,vx,vy,vz,-1.,wanttracking,e,tof,track->GetWeight(),(TMCProcess)track->GetProcID());
-     } 
+       cpg->AddTrack(track->GetPdgCode(),px,py,pz,vx,vy,vz,track->GetMotherId(),wanttracking,e,tof,track->GetWeight(),(TMCProcess)track->GetProcID());
+     }
   }else{
     vx += dx/100.;
     vy += dy/100.;

@@ -67,6 +67,7 @@ veto::veto(const char* name, Bool_t active)
     fLength(-1.),
     fELoss(-1),
     fFastMuon(kFALSE),
+    fFollowMuon(kFALSE),
     fT0z(-2390.),              //!  z-position of veto station
     fT1z(1510.),               //!  z-position of tracking station 1
     fT2z(1710.),               //!  z-position of tracking station 2
@@ -1273,11 +1274,6 @@ void veto::ConstructGeometry()
       totLength = asmb->GetDZ();
       top->AddNode(tMaGVol, 1, new TGeoTranslation(0, 0,zStartMagVol+totLength));
 
-      //Add one more sensitive plane after vacuum tube for timing
-      TGeoVolume *TimeDet = gGeoManager->MakeBox("TimeDet",Sens,dx2,dy,15.*mm);
-      TimeDet->SetLineColor(kMagenta-10);
-      top->AddNode(TimeDet, 1, new TGeoTranslation(0, 0, fTub6z+fTub6length+f_LidThickness+15.*mm+5.*cm));
-      AddSensitiveVolume(TimeDet);
     }
     else if (fDesign==5){
     // designMakeSe 5: simplified trapezoidal design for optimization study
@@ -1353,12 +1349,6 @@ void veto::ConstructGeometry()
       asmb = (TGeoShapeAssembly*)tMaGVol->GetShape();
       totLength = asmb->GetDZ();
       top->AddNode(tMaGVol, 1, new TGeoTranslation(0, 0,zStartMagVol+totLength));
-
-      //Add one more sensitive plane after vacuum tube for timing
-      TGeoVolume *TimeDet = gGeoManager->MakeBox("TimeDet",Sens,dx2,dy,15.*mm);
-      TimeDet->SetLineColor(kMagenta-10);
-      top->AddNode(TimeDet, 1, new TGeoTranslation(0, 0, fTub6z+fTub6length+10.*cm));
-      AddSensitiveVolume(TimeDet);
     }
     else if (fDesign==4){
     // design 4: elliptical double walled tube with LiSci in between
@@ -1536,12 +1526,6 @@ void veto::ConstructGeometry()
       totLength = asmb->GetDZ();
       top->AddNode(tMaGVol, 1, new TGeoTranslation(0, 0,zStartMagVol+totLength));
 
-      //Add one more sensitive plane after vacuum tube for timing
-      TGeoVolume *TimeDet = gGeoManager->MakeBox("TimeDet",Sens,3.*m,6.*m,15.*mm);
-      TimeDet->SetLineColor(kMagenta-10);
-      top->AddNode(TimeDet, 1, new TGeoTranslation(0, 0, fTub6z+fTub6length+10.*cm));
-      AddSensitiveVolume(TimeDet);
-
       //Add veto-timing sensitive plane before vacuum tube
       TGeoVolume *VetoTimeDet = gGeoManager->MakeBox("VetoTimeDet",Sens,aO1+wallo/2.,6.*m,10.*mm);
       VetoTimeDet->SetLineColor(kMagenta-10);
@@ -1569,7 +1553,7 @@ void veto::ConstructGeometry()
      }
 
 // only for fastMuon simulation, otherwise output becomes too big
-     if (fFastMuon){
+     if (fFastMuon && fFollowMuon){
         const char* Vol  = "TGeoVolume";
         const char* Mag  = "Mag";
         const char* Rock = "rock";

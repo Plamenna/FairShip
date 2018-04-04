@@ -28,6 +28,7 @@ geoFile    = None
 mcEngine  = "TGeant4"
 simEngine = "Pythia8"
 InputFile = None 
+OutputFile = None
 withGeo   = False
 dy = str(10.)
 withMCTracks = True
@@ -45,14 +46,16 @@ except getopt.GetoptError:
         print ' enter -f filename -g geofile (-p param file  not needed if geofile present)'  
         sys.exit()
 for o, a in opts:
-        if o in ("-Y"): 
+        if o in ("-Y",):
             dy = float(a)
         if o in ("-p", "--paramFile"):
             ParFile = a
         if o in ("-g", "--geoFile"):
             geoFile = a
-        if o in ("-f"):
+        if o in ("-f",):
             InputFile = a
+        if o in ("-o", "--outFile"):
+            OutputFile = a
 
 print "FairShip setup for",simEngine
 
@@ -69,7 +72,6 @@ if not dy:
  except:
    tmp = None
 
-OutFile	      = "tst."+InputFile.split('/')[-1]
 if InputFile.find('_D')>0: withGeo = True
 
 def printMCTrack(n,MCTrack):
@@ -318,7 +320,7 @@ class DrawTracks(ROOT.FairTask):
     da.GetStartVertex(fPos)
     hitlist[fPos.Z()] = [fPos.X(),fPos.Y()]
   # loop over all sensitive volumes to find hits
-   for P in ["vetoPoint","muonPoint","EcalPoint","HcalPoint","preshowerPoint","strawtubesPoint","ShipRpcPoint","TargetPoint"]:
+   for P in ["vetoPoint","muonPoint","EcalPoint","HcalPoint","preshowerPoint","strawtubesPoint","ShipRpcPoint","TargetPoint","TimeDetPoint"]:
     if not sTree.GetBranch(P): continue
     c=eval("sTree."+P)
     for p in c:
@@ -998,7 +1000,9 @@ if hasattr(fRun,'SetSource'):
  fRun.SetSource(inFile)
 else:
  fRun.SetInputFile(InputFile)
-fRun.SetOutputFile(OutFile)
+if OutputFile == None:
+  OutputFile = ROOT.TMemFile('event_display_output', 'recreate')
+fRun.SetOutputFile(OutputFile)
 
 if ParFile:
  rtdb      = fRun.GetRuntimeDb()
@@ -1038,6 +1042,7 @@ if hasattr(ShipGeo,"MuonTagger"):
   mcHits['MuonTaggerPoints']  = ROOT.FairMCPointDraw("MuonTaggerPoint", ROOT.kGreen, ROOT.kFullCircle)
 else:
  mcHits['VetoPoints']  = ROOT.FairMCPointDraw("vetoPoint", ROOT.kBlue, ROOT.kFullDiamond)
+ mcHits['TimeDetPoints']  = ROOT.FairMCPointDraw("TimeDetPoint", ROOT.kBlue, ROOT.kFullDiamond)
  mcHits['StrawPoints'] = ROOT.FairMCPointDraw("strawtubesPoint", ROOT.kGreen, ROOT.kFullCircle)
  if hasattr(ShipGeo,"EcalOption"): 
   if ShipGeo.EcalOption==2:

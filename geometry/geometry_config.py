@@ -1,4 +1,5 @@
 import shipunit as u
+import ROOT as r
 from ShipGeoConfig import AttrDict, ConfigRegistry
 # the following params should be passed through 'ConfigRegistry.loadpy' method
 # muShieldDesign = 5  # 1=passive 2=active 5=TP design 6=magnetized hadron absorber
@@ -6,16 +7,18 @@ from ShipGeoConfig import AttrDict, ConfigRegistry
 # nuTauTargetDesign  =   #0 = TP, 1 = NEW with magnet, 2 = NEW without magnet, 3 = 2018 design
 
 # targetOpt      = 5  # 0=solid   >0 sliced, 5: 5 pieces of tungsten, 4 air slits, 17: molybdenum tungsten interleaved with H20
-# strawOpt       = 0  # 0=simplistic tracking stations defined in veto.cxx  1=detailed strawtube design
+# strawOpt       = 0  # 0=simplistic tracking stations defined in veto.cxx  1=detailed strawtube design 4=sophisticated straw tube design, horizontal wires (default) 10=2cm straw diameter for 2018 layout
 # preshowerOption = 0 # 1=simple preShower detector for conceptual studies, moves calo and muon stations
 # tankDesign = 5 #  4=TP elliptical tank design, 5 = optimized conical rectangular design, 6=5 without segment-1
 if "muShieldDesign" not in globals():
     muShieldDesign = 5
+if "muShieldGeo" not in globals():
+    muShieldGeo = None
 if "nuTargetPassive" not in globals():
     nuTargetPassive = 1
 if "nuTauTargetDesign" not in globals():
     nuTauTargetDesign = 0
-    if muShieldDesign == 7: 
+    if muShieldDesign >= 7: 
         nuTauTargetDesign=1
 if "targetOpt" not in globals():
     targetOpt = 18
@@ -62,8 +65,8 @@ with ConfigRegistry.register_config("basic") as c:
     # make z coordinates for the decay volume and tracking stations relative to T4z
     # eventually, the only parameter which needs to be changed when the active shielding lenght changes.
     z4=2438.*u.cm+magnetIncrease+extraVesselLength
-    if strawDesign != 4:
-     print "this design is not supported, use strawDesign = 4"
+    if strawDesign != 4 and strawDesign != 10 :
+     print "this design ",strawDesign," is not supported, use strawDesign = 4 or 10"
      1/0 
     else:
      c.chambers.Length = totalLength
@@ -91,8 +94,12 @@ with ConfigRegistry.register_config("basic") as c:
      c.Veto = AttrDict(z=0*u.cm)
      c.Veto.innerSupport = 3.*u.cm 
      c.Veto.innerSupportMed = "steel"
-     c.Veto.outerSupport = 8.*u.mm
-     c.Veto.outerSupportMed = "Aluminum"
+     if tankDesign > 5: 
+      c.Veto.outerSupport = 5.*u.mm
+      c.Veto.outerSupportMed = "steel"
+     else:
+      c.Veto.outerSupport = 8.*u.mm
+      c.Veto.outerSupportMed = "Aluminum"
      c.Veto.sensitiveThickness = 0.3*u.m
      c.Veto.sensitiveMed = "Scintillator"
      c.Veto.lidThickness = 80.*u.mm
@@ -121,14 +128,23 @@ with ConfigRegistry.register_config("basic") as c:
     c.scintillator.Rmax = 260.*u.cm
 
     c.strawtubes = AttrDict(z=0*u.cm)
-    
-    c.strawtubes.InnerStrawDiameter = 0.975*u.cm
+    if strawDesign==4:
+     c.strawtubes.InnerStrawDiameter = 0.975*u.cm
+     c.strawtubes.StrawPitch         = 1.76*u.cm  
+     c.strawtubes.DeltazLayer        = 1.1*u.cm   
+     c.strawtubes.DeltazPlane        = 2.6*u.cm   
+     c.strawtubes.YLayerOffset = c.strawtubes.StrawPitch  / 2.
+     c.strawtubes.YPlaneOffset = c.strawtubes.StrawPitch  / 4.
+    elif strawDesign==10:  # baseline for 2018
+     c.strawtubes.InnerStrawDiameter = 1.975*u.cm
+     c.strawtubes.StrawPitch         = 3.60*u.cm  
+     c.strawtubes.DeltazLayer        = 1.6*u.cm   
+     c.strawtubes.DeltazPlane        = 4.2*u.cm   
+     c.strawtubes.YLayerOffset = 1.9*u.cm        
+     c.strawtubes.YPlaneOffset = 1.3*u.cm
+
     c.strawtubes.WallThickness      = 0.0039*u.cm
     c.strawtubes.OuterStrawDiameter = (c.strawtubes.InnerStrawDiameter + 2*c.strawtubes.WallThickness)
-
-    c.strawtubes.StrawPitch         = 1.76*u.cm
-    c.strawtubes.DeltazLayer        = 1.1*u.cm
-    c.strawtubes.DeltazPlane        = 2.6*u.cm
     
     c.strawtubes.StrawsPerLayer     = int(c.Yheight/c.strawtubes.StrawPitch)
     c.strawtubes.ViewAngle          = 5
@@ -142,8 +158,23 @@ with ConfigRegistry.register_config("basic") as c:
     c.Bfield.y   = c.Yheight
     c.Bfield.x   = 3.*u.m
 
+# TimeDet
+    c.TimeDet = AttrDict(z=0)
+    c.TimeDet.dzBarRow = 1.2 * u.cm
+    c.TimeDet.dzBarCol = 2.4 * u.cm
+    c.TimeDet.zBar = 1 * u.cm
+    c.TimeDet.DZ = (c.TimeDet.dzBarRow + c.TimeDet.dzBarCol + c.TimeDet.zBar) / 2
+    c.TimeDet.DX = 250 * u.cm
+    c.TimeDet.DY = 500 * u.cm
+    c.TimeDet.z = c.Chamber6.z + c.chambers.Tub6length + c.Veto.lidThickness + c.TimeDet.DZ + 1*u.cm # safety margin
+
     if CaloDesign==0:
      c.HcalOption = 1
+     c.EcalOption = 1
+     c.preshowerOption = 0
+     c.splitCal = 0
+    elif CaloDesign==3:
+     c.HcalOption = 2
      c.EcalOption = 1
      c.preshowerOption = 0
      c.splitCal = 0
@@ -161,7 +192,7 @@ with ConfigRegistry.register_config("basic") as c:
 
     presShowerDeltaZ = 0.
     if c.preshowerOption >0:
-     PreshowerStart = c.Chamber6.z + c.chambers.Tub6length + c.Veto.lidThickness + (8+5)*u.cm
+     PreshowerStart = c.TimeDet.z + c.TimeDet.DZ + 5*u.cm + presShowerDeltaZ
      c.PreshowerFilter0  = AttrDict(z= PreshowerStart )
      c.PreshowerStation0 = AttrDict(z= c.PreshowerFilter0.z + 10*u.cm )
 
@@ -180,7 +211,7 @@ with ConfigRegistry.register_config("basic") as c:
      presShowerDeltaZ = PreshowerLeverArm + 2*10*u.cm + 2*2.*u.cm
 
     c.SplitCal = AttrDict(z=0)
-    c.SplitCal.ZStart = c.Chamber6.z + c.chambers.Tub6length + c.Veto.lidThickness + (8+5)*u.cm + presShowerDeltaZ
+    c.SplitCal.ZStart = c.TimeDet.z + c.TimeDet.DZ + 5*u.cm + presShowerDeltaZ 
     c.SplitCal.XMax    =  290.*u.cm
     c.SplitCal.YMax    =  510.*u.cm * c.Yheight / (10.*u.m)
     c.SplitCal.Empty = 0*u.cm
@@ -205,7 +236,7 @@ with ConfigRegistry.register_config("basic") as c:
     c.SplitCal.ActiveECAL_gas_gap=10*u.cm
     c.SplitCal.SplitCalThickness=(c.SplitCal.FilterECALThickness+c.SplitCal.ActiveECALThickness)*c.SplitCal.nECALSamplings+c.SplitCal.BigGap+c.SplitCal.FilterHCALThickness
 
-    c.ecal  =  AttrDict(z = c.Chamber6.z + c.chambers.Tub6length + c.Veto.lidThickness + (8+5)*u.cm + presShowerDeltaZ)  # 8cm space for time det, hardcoded in veto.cxx
+    c.ecal  =  AttrDict(z = c.TimeDet.z + c.TimeDet.DZ  + 5*u.cm + presShowerDeltaZ)  #
     c.ecal.File = EcalGeoFile
     hcalThickness = 232*u.cm
     if not c.HcalOption < 0:
@@ -258,8 +289,8 @@ with ConfigRegistry.register_config("basic") as c:
     # zGap to compensate automatic shortening of magnets
     zGap = 0.5 * c.muShield.dZgap  # halflengh of gap
     if muShieldDesign == 7:
-        c.muShield.dZ1 = 0.7*u.m
-        c.muShield.dZ2 = 1.7*u.m
+        c.muShield.dZ1 = 0.7 * u.m + zGap
+        c.muShield.dZ2 = 1.7 * u.m + zGap
         c.muShield.dZ3 = 2.0*u.m + zGap
         c.muShield.dZ4 = 2.0*u.m + zGap
         c.muShield.dZ5 = 2.75*u.m + zGap
@@ -267,9 +298,42 @@ with ConfigRegistry.register_config("basic") as c:
         c.muShield.dZ7 = 3.0*u.m + zGap
         c.muShield.dZ8 = 2.35*u.m + zGap
         c.muShield.dXgap = 0.*u.m
-        c.muShield.length = 2*(c.muShield.dZ1+c.muShield.dZ2+c.muShield.dZ3+c.muShield.dZ4+c.muShield.dZ5+c.muShield.dZ6
-                         +c.muShield.dZ7+c.muShield.dZ8 ) + c.muShield.LE  # leave some space for nu-tau 
-        c.muShield.z  =  -c.decayVolume.length/2.-c.muShield.length/2.
+    elif muShieldDesign == 9:
+        c.muShield.Field = 1.7  # Tesla
+        c.muShield.dZ1 = 0.35 * u.m + zGap
+        c.muShield.dZ2 = 2.26 * u.m + zGap
+        c.muShield.dZ3 = 2.08 * u.m + zGap
+        c.muShield.dZ4 = 2.07 * u.m + zGap
+        c.muShield.dZ5 = 2.81 * u.m + zGap
+        c.muShield.dZ6 = 2.48 * u.m + zGap
+        c.muShield.dZ7 = 3.05 * u.m + zGap
+        c.muShield.dZ8 = 2.42 * u.m + zGap
+        c.muShield.dXgap = 0. * u.m
+    elif muShieldDesign == 8:
+        assert muShieldGeo
+        c.muShieldGeo = muShieldGeo
+        print "Load geo"
+        f = r.TFile.Open(muShieldGeo)
+        params = r.TVectorD()
+        params.Read('params')
+        f.Close()
+        c.muShield.dZ1 = 0.35*u.m + zGap
+        c.muShield.dZ2 = 2.26*u.m + zGap
+        c.muShield.dZ3 = params[2]
+        c.muShield.dZ4 = params[3]
+        c.muShield.dZ5 = params[4]
+        c.muShield.dZ6 = params[5]
+        c.muShield.dZ7 = params[6]
+        c.muShield.dZ8 = params[7]
+        c.muShield.dXgap = 0.*u.m
+    if muShieldDesign in range(7, 10):
+        c.muShield.length = 2 * (
+              c.muShield.dZ1 + c.muShield.dZ2 +
+              c.muShield.dZ3 + c.muShield.dZ4 +
+              c.muShield.dZ5 + c.muShield.dZ6 +
+              c.muShield.dZ7 + c.muShield.dZ8
+        ) + c.muShield.LE
+        c.muShield.z = -(c.decayVolume.length + c.muShield.length) / 2.
 
     if muShieldDesign == 3:
      c.muShield.dZ1 = 3.5*u.m
@@ -636,5 +700,3 @@ with ConfigRegistry.register_config("basic") as c:
     c.NuTauTarget.PillarX = 0.5*u.m
     c.NuTauTarget.PillarZ = 0.5*u.m
     c.NuTauTarget.PillarY = 10*u.m - c.NuTauTarget.ydim/2 -c.NuTauTarget.BaseY- 0.1*u.mm - c.cave.floorHeightMuonShield
-        
-

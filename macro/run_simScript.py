@@ -18,7 +18,7 @@ mcEngine     = "TGeant4"
 simEngine    = "muonDIS"  # "Genie" # Ntuple
 nEvents      = 1
 firstEvent   = 0
-inclusive    = "c"    # True = all processes if "c" only ccbar -> HNL, if "b" only bbar -> HNL, and for darkphotons: if meson = production through meson decays, pbrem = proton bremstrahlung, to do: QCD prod.
+inclusive    = "c"    # True = all processes if "c" only ccbar -> HNL, if "b" only bbar -> HNL, and for darkphotons: if meson = production through meson decays, pbrem = proton bremstrahlung, qcd = ffbar -> DP.
 deepCopy     = False  # False = copy only stable particles to stack, except for HNL events
 MCTracksWithHitsOnly   = False  # copy particles which produced a hit and their history
 MCTracksWithEnergyCutOnly = True # copy particles above a certain kin energy cut
@@ -38,26 +38,34 @@ outputDir    = "."
 sameSeed     = False # can be set to an integer for the muonBackground simulation with specific seed for each muon 
 theSeed      = int(10000 * time.time() % 10000000)
 
-dy           = 10.
-dv           = 5 # 4=TP elliptical tank design, 5 = optimized conical rectangular design, 6=5 without segment-1
-ds           = 7 # 5=TP muon shield, 6=magnetized hadron, 7=short magnet design 
-nud          = 1 # 0=TP, 1=new magnet option for short muon shield, 2= no magnet surrounding neutrino detector
+globalDesigns = {'2016':{'dy':10.,'dv':5,'ds':7,'nud':1,'caloDesign':0,'strawDesign':4},\
+                 '2018':{'dy':10.,'dv':6,'ds':9,'nud':3,'caloDesign':3,'strawDesign':10}}
+default = '2016'
+
+dy           = globalDesigns[default]['dy'] # max height of vacuum tank
+dv           = globalDesigns[default]['dv'] # 4=TP elliptical tank design, 5 = optimized conical rectangular design, 6=5 without segment-1
+ds           = globalDesigns[default]['ds'] # 5=TP muon shield, 6=magnetized hadron, 7=short magnet design, 9=optimised with T4 as constraint, 8=requires config file
+nud          = globalDesigns[default]['nud'] # 0=TP, 1=new magnet option for short muon shield, 2= no magnet surrounding neutrino detector
+caloDesign   = globalDesigns[default]['caloDesign'] # 0=ECAL/HCAL TP  1=ECAL/HCAL TP + preshower 2=splitCal  3=ECAL/ passive HCAL 
+strawDesign  = globalDesigns[default]['strawDesign'] # simplistic tracker design,  4=sophisticated straw tube design, horizontal wires (default), 10=2cm straw diameter for 2018 layout
+
 charm        = 0 # !=0 create charm detector instead of SHiP
-caloDesign   = 0 # 0=ECAL/HCAL TP  1=ECAL/HCAL TP + preshower 2=splitCal
+geofile = None
 
 inactivateMuonProcesses = False   # provisionally for making studies of various muon background sources
 checking4overlaps = False
 if debug>1 : checking4overlaps = True
 phiRandom   = False  # only relevant for muon background generator
-followMuon  = False   # only transport muons for a fast muon only background estimate
+followMuon  = False  # make muonshield active to follow muons
+fastMuon    = False  # only transport muons for a fast muon only background estimate
 nuRadiography = False # misuse GenieGenerator for neutrino radiography and geometry timing test
 Opt_high = None # switch for cosmic generator
 try:
-        opts, args = getopt.getopt(sys.argv[1:], "D:FHPu:n:i:f:c:hqv:s:l:A:Y:i:m:co:t",[\
-                                   "PG","Pythia6","Pythia8","Genie","MuDIS","Ntuple","Nuage","MuonBack","FollowMuon",\
+        opts, args = getopt.getopt(sys.argv[1:], "D:FHPu:n:i:f:c:hqv:s:l:A:Y:i:m:co:t:g",[\
+                                   "PG","Pythia6","Pythia8","Genie","MuDIS","Ntuple","Nuage","MuonBack","FollowMuon","FastMuon",\
                                    "Cosmics=","nEvents=", "display", "seed=", "firstEvent=", "phiRandom", "mass=", "couplings=", "coupling=", "epsilon=",\
                                    "output=","tankDesign=","muShieldDesign=","NuRadio","test",\
-                                   "DarkPhoton","RpvSusy","SusyBench=","sameSeed=","charm=","nuTauTargetDesign=","caloDesign="])
+                                   "DarkPhoton","RpvSusy","SusyBench=","sameSeed=","charm=","nuTauTargetDesign=","caloDesign=","strawDesign="])
 
 except getopt.GetoptError:
         # print help information and exit:
@@ -68,7 +76,7 @@ except getopt.GetoptError:
         print '       --MuonBack to generate events from muon background file, --Cosmics=0 for cosmic generator data'  
         print '       --RpvSusy to generate events based on RPV neutralino (default HNL)'
         print '       --DarkPhoton to generate events with dark photons (default HNL)'
-        print ' for darkphoton generation, use -A meson or -A pbrem'
+        print ' for darkphoton generation, use -A meson or -A pbrem or -A qcd'
         print '       --SusyBench to specify which of the preset benchmarks to generate (default 2)'
         print '       --mass or -m to set HNL or New Particle mass'
         print '       --couplings \'U2e,U2mu,U2tau\' or -c \'U2e,U2mu,U2tau\' to set list of HNL couplings'
@@ -89,7 +97,7 @@ for o, a in opts:
             if a.lower() == 'charmonly':
                charmonly = True
                HNL = False 
-            if a not in ['b','c','meson','pbrem']: inclusive = True
+            if a not in ['b','c','meson','pbrem','qcd']: inclusive = True
         if o in ("--Genie",):
             simEngine = "Genie"
         if o in ("--NuRadio",):
@@ -98,6 +106,8 @@ for o, a in opts:
             simEngine = "Ntuple"
         if o in ("--FollowMuon",):
             followMuon = True
+        if o in ("--FastMuon",):
+            fastMuon = True
         if o in ("--MuonBack",):
             simEngine = "MuonBack"
         if o in ("--Nuage",):
@@ -122,6 +132,8 @@ for o, a in opts:
             if a.lower() == "none": inputFile = None
             else: inputFile = a
             defaultInputFile = False
+        if o in ("-g",):
+            geofile = a
         if o in ("-o", "--output",):
             outputDir = a
         if o in ("-Y",): 
@@ -134,6 +146,8 @@ for o, a in opts:
             nud = int(a)
         if o in ("--caloDesign",):
             caloDesign = int(a)
+        if o in ("--strawDesign",):
+            strawDesign = int(a)
         if o in ("--charm",):
             charm = int(a)
         if o in ("-F",):
@@ -181,11 +195,9 @@ ROOT.gRandom.SetSeed(theSeed)  # this should be propagated via ROOT to Pythia8 a
 shipRoot_conf.configure(DarkPhoton)      # load basic libraries, prepare atexit for python
 # - muShieldDesign = 2  # 1=passive 5=active (default) 7=short design+magnetized hadron absorber
 # - targetOpt      = 5  # 0=solid   >0 sliced, 5: 5 pieces of tungsten, 4 H20 slits, 17: Mo + W +H2O (default)
-# - strawDesign    = 4  # simplistic tracker design,  4=sophisticated straw tube design, horizontal wires (default)
-#   caloDesign     = 0 # 0=ECAL/HCAL TP  1=ECAL/HCAL TP + preshower 2=splitCal
 #   nuTauTargetDesign = 0 # 0 = TP, 1 = NEW with magnet, 2 = NEW without magnet, 3 = 2018 design
 if charm == 0: ship_geo = ConfigRegistry.loadpy("$FAIRSHIP/geometry/geometry_config.py", Yheight = dy, tankDesign = dv, \
-                                                muShieldDesign = ds, nuTauTargetDesign=nud, CaloDesign=caloDesign)
+                                                muShieldDesign = ds, nuTauTargetDesign=nud, CaloDesign=caloDesign, strawDesign=strawDesign, muShieldGeo=geofile)
 else: ship_geo = ConfigRegistry.loadpy("$FAIRSHIP/geometry/charm-geometry_config.py")
 
 # switch off magnetic field to measure muon flux
@@ -260,9 +272,13 @@ if simEngine == "Pythia8":
    P8gen.UseExternalFile(inputFile, firstEvent)
  if DarkPhoton:
   P8gen = ROOT.DPPythia8Generator()
-  P8gen.SetDPId(9900015)
+  if inclusive=='qcd':
+	  P8gen.SetDPId(4900023)
+  else:
+	  P8gen.SetDPId(9900015)
   import pythia8darkphoton_conf
-  pythia8darkphoton_conf.configure(P8gen,theDPmass,theDPepsilon,inclusive,deepCopy)
+  passDPconf = pythia8darkphoton_conf.configure(P8gen,theDPmass,theDPepsilon,inclusive,deepCopy)
+  if (passDPconf!=1): sys.exit()
   P8gen.SetSmearBeam(1*u.cm) # finite beam size
   if ds==7: # short muon shield
    P8gen.SetLmin(44*u.m)
@@ -398,8 +414,13 @@ if simEngine == "MuonBack":
  if sameSeed: MuonBackgen.SetSameSeed(sameSeed)
  primGen.AddGenerator(MuonBackgen)
  nEvents = min(nEvents,MuonBackgen.GetNevents())
- print 'Process ',nEvents,' from input file, with Phi random=',phiRandom
- if followMuon :  modules['Veto'].SetFastMuon()
+ MCTracksWithHitsOnly = True # otherwise, output file becomes too big
+ print 'Process ',nEvents,' from input file, with Phi random=',phiRandom, ' with MCTracksWithHitsOnly',MCTracksWithHitsOnly
+ if followMuon :  
+    fastMuon = True
+    modules['Veto'].SetFollowMuon()
+ if fastMuon :    modules['Veto'].SetFastMuon()
+ #   missing for the above use case, without making muon shield sensitve
  # optional, boost gamma2muon conversion
  # ROOT.kShipMuonsCrossSectionFactor = 100. 
 #
@@ -518,6 +539,32 @@ print "Output file is ",  outFile
 print "Parameter file is ",parFile
 print "Real time ",rtime, " s, CPU time ",ctime,"s"
 
+# remove empty events
+if simEngine == "MuonBack":
+ tmpFile = outFile+"tmp"
+ fin   = ROOT.gROOT.GetListOfFiles()[0]
+ t     = fin.cbmsim
+ fout  = ROOT.TFile(tmpFile,'recreate')
+ sTree = t.CloneTree(0)
+ nEvents = 0
+ pointContainers = []
+ for x in sTree.GetListOfBranches():
+   name = x.GetName() 
+   if not name.find('Point')<0: pointContainers.append('sTree.'+name+'.GetEntries()') # makes use of convention that all sensitive detectors fill XXXPoint containers
+ for n in range(t.GetEntries()):
+     rc = t.GetEvent(n)
+     empty = True 
+     for x in pointContainers:
+        if eval(x)>0: empty = False
+     if not empty:
+        rc = sTree.Fill()
+        nEvents+=1
+ sTree.AutoSave()
+ fout.Close()
+ print "removed empty events, left with:", nEvents
+ rc1 = os.system("rm  "+outFile)
+ rc2 = os.system("mv "+tmpFile+" "+outFile)
+ fin.SetWritable(False) # bpyass flush error
 # ------------------------------------------------------------------------
 import checkMagFields
 def visualizeMagFields():
